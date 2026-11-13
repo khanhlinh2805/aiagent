@@ -1,0 +1,64 @@
+{
+  "sales_manager": {
+    "name": "Nguyễn Hoàng Nam",
+    "email": "nam.nh@minhan.com.vn",
+    "role": "Trưởng phòng Kinh doanh B2B"
+  },
+  "sales_representatives": [
+    {
+      "id": "REP01",
+      "name": "Nguyễn Văn An",
+      "email": "an.nv@minhan.com.vn",
+      "specialty": ["Máy chủ & Lưu trữ", "Hạ tầng Trung tâm dữ liệu"],
+      "current_active_leads": 4,
+      "max_capacity": 15,
+      "status": "active"
+    },
+    {
+      "id": "REP02",
+      "name": "Trần Thị Bình",
+      "email": "binh.tt@minhan.com.vn",
+      "specialty": ["Mạng & Bảo mật", "Hạ tầng mạng"],
+      "current_active_leads": 3,
+      "max_capacity": 15,
+      "status": "active"
+    },
+    {
+      "id": "REP03",
+      "name": "Lê Quốc Cường",
+      "email": "cuong.lq@minhan.com.vn",
+      "specialty": ["Thiết bị đầu cuối", "Laptop & Máy trạm Doanh nghiệp"],
+      "current_active_leads": 5,
+      "max_capacity": 15,
+      "status": "active"
+    },
+    {
+      "id": "REP04",
+      "name": "Phạm Thu Dung",
+      "email": "dung.pt@minhan.com.vn",
+      "specialty": ["Phần mềm & Bản quyền", "Cloud SaaS"],
+      "current_active_leads": 2,
+      "max_capacity": 15,
+      "status": "active"
+    },
+    {
+      "id": "REP05",
+      "name": "Hoàng Minh Đức",
+      "email": "duc.hm@minhan.com.vn",
+      "specialty": ["Dịch vụ kỹ thuật", "Bảo trì & Vận hành IT"],
+      "current_active_leads": 3,
+      "max_capacity": 15,
+      "status": "active"
+    },
+    {
+      "id": "REP06",
+      "name": "Đỗ Phương Mai",
+      "email": "mai.dp@minhan.com.vn",
+      "specialty": ["Giải pháp Tổng thể B2B", "Khách hàng Doanh nghiệp lớn"],
+      "current_active_leads": 2,
+      "max_capacity": 15,
+      "status": "active"
+    }
+  ]
+}
+

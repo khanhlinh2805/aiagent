@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Data Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #2d3748;
+      --text-muted: #718096;
+      --border: #e2e8f0;
+      --pastel-mint: #e8f5e9;
+      --pastel-mint-text: #2e7d32;
+      --pastel-lavender: #ede7f6;
+      --pastel-lavender-text: #5e35b1;
+      --pastel-peach: #fff3e0;
+      --pastel-peach-text: #e65100;
+      --pastel-blue: #e1f5fe;
+      --pastel-blue-text: #0277bd;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+    }
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .dashboard-title h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a202c;
+    }
+    .dashboard-title p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .kpi-card.mint { background: var(--pastel-mint); border-color: #c8e6c9; }
+    .kpi-card.lavender { background: var(--pastel-lavender); border-color: #d1c4e9; }
+    .kpi-card.peach { background: var(--pastel-peach); border-color: #ffe0b2; }
+    .kpi-card.blue { background: var(--pastel-blue); border-color: #b3e5fc; }
+    .kpi-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .kpi-value {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-top: 0.35rem;
+      color: #1a202c;
+    }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .chart-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .chart-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1a202c;
+    }
+    .btn-export {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-header">
+    <div class="dashboard-title">
+      <h1>📊 Doanh Nghiệp Analytics Dashboard</h1>
+      <p>Trực quan hóa dữ liệu tự động từ bảng tính đã xác thực</p>
+    </div>
+    <button class="btn-export" onclick="window.print()">🖨️ In / Lưu PDF</button>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card mint">
+      <div class="kpi-label">Tổng Quy Mô Dữ Liệu</div>
+      <div class="kpi-value">21 bản ghi</div>
+    </div>
+    <div class="kpi-card lavender">
+      <div class="kpi-label">Tổng Giá Trị Ghi Nhận</div>
+      <div class="kpi-value">3,986,000,000 VNĐ</div>
+    </div>
+    <div class="kpi-card peach">
+      <div class="kpi-label">Giá Trị Bình Quân</div>
+      <div class="kpi-value">189,809,524 VNĐ</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Tốc Độ Tăng Trưởng</div>
+      <div class="kpi-value">+14.8%</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Cơ Cấu Giá Trị Theo Phân Khúc Hàng Đầu</h3>
+      <canvas id="categoryChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Xu Hướng Giá Trị Theo Dòng Thời Gian</h3>
+      <canvas id="trendChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const catCtx = document.getElementById('categoryChart').getContext('2d');
+    new Chart(catCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ["Switch L3 Core", "Next-Gen Firewall", "Switch PoE Access", "Wi-Fi 6 Enterprise"],
+        datasets: [{
+          data: [1440000000.0, 1190000000.0, 784000000.0, 572000000.0],
+          backgroundColor: ['#81c784', '#ba68c8', '#ffb74d', '#4fc3f7', '#aed581'],
+          borderWidth: 2,
+          borderColor: '#ffffff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    const trendCtx = document.getElementById('trendChart').getContext('2d');
+    new Chart(trendCtx, {
+      type: 'line',
+      data: {
+        labels: ["2026-08", "2026-09", "2026-10"],
+        datasets: [{
+          label: 'Giá trị (VNĐ)',
+          data: [1323000000.0, 1475000000.0, 1188000000.0],
+          borderColor: '#66bb6a',
+          backgroundColor: 'rgba(129, 199, 132, 0.2)',
+          fill: true,
+          tension: 0.35,
+          borderWidth: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

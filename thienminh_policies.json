@@ -1,0 +1,74 @@
+{
+  "governance_roles": {
+    "sales_manager": {
+      "name": "Trần Quốc Bảo",
+      "title": "Trưởng phòng Kinh doanh Dự án",
+      "email": "bao.tq@thienminh.net.vn"
+    },
+    "technical_director": {
+      "name": "ThS. Đỗ Văn Nam",
+      "title": "Giám đốc Kỹ thuật & Giải pháp",
+      "email": "nam.dv@thienminh.net.vn"
+    },
+    "board_of_directors": {
+      "name": "Ban Giám Đốc Thiên Minh",
+      "title": "Hội đồng Ban Giám đốc Điều hành",
+      "email": "bod@thienminh.net.vn"
+    }
+  },
+  "discount_matrix": {
+    "sales_rep_max_hardware_discount_pct": 7.0,
+    "sales_rep_max_service_discount_pct": 10.0,
+    "manager_approval_hardware_discount_limit_pct": 15.0,
+    "manager_approval_service_discount_limit_pct": 20.0
+  },
+  "deal_value_tiers": {
+    "tier_1_sales_rep_limit_vnd": 300000000,
+    "tier_2_sales_manager_limit_vnd": 800000000
+  },
+  "escalation_conditions": {
+    "requires_manager_approval": [
+      {
+        "code": "DISCOUNT_OVER_REP_LIMIT",
+        "description": "Chiết khấu phần cứng vượt 7% hoặc dịch vụ vượt 10% (dưới 15%)"
+      },
+      {
+        "code": "DEAL_VALUE_TIER_2",
+        "description": "Tổng giá trị dự án từ 300 triệu đến 800 triệu VNĐ"
+      },
+      {
+        "code": "TIGHT_SCHEDULE_WARNING",
+        "description": "Tiến độ triển khai gấp, cần Kỹ thuật điều phối ưu tiên ca kíp"
+      }
+    ],
+    "requires_board_of_directors_approval": [
+      {
+        "code": "OUT_OF_CATALOG_ITEM",
+        "description": "Yêu cầu có thiết bị hoặc giải pháp NẰM NGOÀI DANH MỤC tiêu chuẩn (cần đàm phán hợp đồng cung ứng phụ, bảo hành ngoại lệ)"
+      },
+      {
+        "code": "DEEP_SPECIAL_DISCOUNT",
+        "description": "Đề xuất chiết khấu đặc biệt vượt 15% (ảnh hưởng nghiêm trọng biên lợi nhuận công ty)"
+      },
+      {
+        "code": "MEGA_DEAL_VALUE",
+        "description": "Tổng giá trị dự án vượt quá 800 triệu VNĐ"
+      },
+      {
+        "code": "SCHEDULE_CONFLICT_BLACKOUT",
+        "description": "Yêu cầu ngày bàn giao rơi vào thời gian Đội Kỹ thuật & Vận hành đã khóa lịch 100%"
+      }
+    ]
+  },
+  "hitl_review_guidelines": {
+    "data_boundary_checks": [
+      "Kiểm tra không bị ảo giác (hallucination) về thông số kỹ thuật",
+      "Kiểm tra tính tương thích giữa Switch Core và Module quang cáp kết nối",
+      "Kiểm tra công suất cấp nguồn PoE tổng cho toàn bộ Access Point",
+      "Xác nhận sự đồng thuận 3 bên: Kinh doanh (Giá & Khách hàng), Kỹ thuật (Giải pháp & Đáp ứng tính năng), Vận hành (Hàng hóa & Lịch triển khai)"
+    ]
+  },
+  "quote_validity_days": 30,
+  "default_vat_rate": 0.10
+}
+

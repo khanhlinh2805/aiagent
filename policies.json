@@ -1,0 +1,37 @@
+{
+  "discount_matrix": {
+    "hardware_max_rep_discount_pct": 8.0,
+    "software_max_rep_discount_pct": 5.0,
+    "services_max_rep_discount_pct": 12.0,
+    "maximum_manager_approved_discount_pct": 20.0
+  },
+  "deal_value_limits": {
+    "sales_rep_max_deal_vnd": 250000000,
+    "requires_director_approval_vnd": 1000000000
+  },
+  "manager_approval_triggers": [
+    {
+      "code": "DISCOUNT_OVER_LIMIT",
+      "name": "Chiết khấu vượt hạn mức NVKD",
+      "description": "Chiết khấu phần cứng > 8%, phần mềm > 5%, hoặc dịch vụ > 12%"
+    },
+    {
+      "code": "DEAL_VALUE_HIGH",
+      "name": "Giá trị cơ hội vượt hạn mức NVKD",
+      "description": "Tổng giá trị đề xuất trước thuế > 250,000,000 VNĐ"
+    },
+    {
+      "code": "RUSH_TIMELINE_CONFLICT",
+      "name": "Xung đột thời hạn giao hàng cam kết",
+      "description": "Khách hàng yêu cầu thời hạn ngắn hơn tổng thời gian chuẩn bị tồn kho & kỹ thuật của Vận hành"
+    },
+    {
+      "code": "CREDIT_TERMS_CUSTOM",
+      "name": "Điều khoản công nợ đặc biệt",
+      "description": "Khách yêu cầu trả sau vượt quá 30 ngày hoặc chia đợt thanh toán ngoại lệ"
+    }
+  ],
+  "vat_rate_default": 0.10,
+  "quote_validity_days": 15
+}
+

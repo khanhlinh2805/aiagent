@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sample_sales_2026",
+    "name": "Báo Cáo Bán Hàng & Doanh Thu Q3-Q4 (Hợp lệ)",
+    "filename": "Bao_Cao_Doanh_Thu_2026.xlsx",
+    "sheet_type": "EXCEL",
+    "description": "Chứa 30 giao dịch thiết bị công nghệ, có một số dòng null và trùng lặp để AI làm sạch.",
+    "is_valid_format": true,
+    "is_stable": true,
+    "data": [
+      {"Mã GD": "TX-1001", "Ngày": "2026-08-10", "Khách Hàng": "Techcom Securities", "Nhóm Sản Phẩm": "Switch L3 Core", "Số Lượng": 2, "Doanh Thu": 320000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1002", "Ngày": "2026-08-12", "Khách Hàng": "Vingroup Retail", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 1, "Doanh Thu": 85000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1003", "Ngày": "2026-08-15", "Khách Hàng": "FPT Software", "Nhóm Sản Phẩm": "Switch PoE Access", "Số Lượng": 6, "Doanh Thu": 168000000, "Khu Vực": "Đà Nẵng"},
+      {"Mã GD": "TX-1004", "Ngày": "2026-08-18", "Khách Hàng": "Vietcombank", "Nhóm Sản Phẩm": "Wi-Fi 6 Enterprise", "Số Lượng": 15, "Doanh Thu": 132000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1005", "Ngày": "2026-08-20", "Khách Hàng": "Masan Consumer", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 2, "Doanh Thu": 170000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1006", "Ngày": "2026-08-22", "Khách Hàng": "Tiki Corporation", "Nhóm Sản Phẩm": "Switch L3 Core", "Số Lượng": 1, "Doanh Thu": 160000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1007", "Ngày": "2026-08-25", "Khách Hàng": "Bệnh Viện Hoàn Mỹ", "Nhóm Sản Phẩm": "Wi-Fi 6 Enterprise", "Số Lượng": 20, "Doanh Thu": 176000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1008", "Ngày": "2026-08-28", "Khách Hàng": "Viettel Post", "Nhóm Sản Phẩm": "Switch PoE Access", "Số Lượng": 4, "Doanh Thu": 112000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1009", "Ngày": "2026-09-02", "Khách Hàng": "Shopee VN", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 3, "Doanh Thu": 255000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1010", "Ngày": "2026-09-05", "Khách Hàng": "TH True Milk", "Nhóm Sản Phẩm": "Switch L3 Core", "Số Lượng": 1, "Doanh Thu": 160000000, "Khu Vực": "Nghệ An"},
+      {"Mã GD": "TX-1011", "Ngày": "2026-09-10", "Khách Hàng": "Bamboo Airways", "Nhóm Sản Phẩm": "Wi-Fi 6 Enterprise", "Số Lượng": 8, "Doanh Thu": 70400000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1012", "Ngày": "2026-09-15", "Khách Hàng": "Hoa Phat Group", "Nhóm Sản Phẩm": "Switch PoE Access", "Số Lượng": 8, "Doanh Thu": 224000000, "Khu Vực": "Hải Dương"},
+      {"Mã GD": "TX-1013", "Ngày": "2026-09-20", "Khách Hàng": "VinFast Factory", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 4, "Doanh Thu": 340000000, "Khu Vực": "Hải Phòng"},
+      {"Mã GD": "TX-1014", "Ngày": "2026-09-25", "Khách Hàng": "VNPT Technology", "Nhóm Sản Phẩm": "Switch L3 Core", "Số Lượng": 2, "Doanh Thu": 320000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1015", "Ngày": "2026-09-30", "Khách Hàng": "Sun Group Da Nang", "Nhóm Sản Phẩm": "Wi-Fi 6 Enterprise", "Số Lượng": 12, "Doanh Thu": 105600000, "Khu Vực": "Đà Nẵng"},
+      {"Mã GD": "TX-1016", "Ngày": "2026-10-05", "Khách Hàng": "MB Bank", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 2, "Doanh Thu": 170000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1017", "Ngày": "2026-10-10", "Khách Hàng": "Kido Foods", "Nhóm Sản Phẩm": "Switch PoE Access", "Số Lượng": 5, "Doanh Thu": 140000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1018", "Ngày": "2026-10-15", "Khách Hàng": "VNG Corporation", "Nhóm Sản Phẩm": "Switch L3 Core", "Số Lượng": 3, "Doanh Thu": 480000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1019", "Ngày": "2026-10-20", "Khách Hàng": "Novaland Group", "Nhóm Sản Phẩm": "Wi-Fi 6 Enterprise", "Số Lượng": 10, "Doanh Thu": 88000000, "Khu Vực": "TP.HCM"},
+      {"Mã GD": "TX-1020", "Ngày": "2026-10-25", "Khách Hàng": "PetroVietnam", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 2, "Doanh Thu": 170000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1020", "Ngày": "2026-10-25", "Khách Hàng": "PetroVietnam", "Nhóm Sản Phẩm": "Next-Gen Firewall", "Số Lượng": 2, "Doanh Thu": 170000000, "Khu Vực": "Hà Nội"},
+      {"Mã GD": "TX-1021", "Ngày": "2026-10-28", "Khách Hàng": null, "Nhóm Sản Phẩm": "Switch PoE Access", "Số Lượng": null, "Doanh Thu": 140000000, "Khu Vực": "Cần Thơ"}
+    ]
+  },
+  {
+    "id": "sample_crm_clients",
+    "name": "Dữ Liệu Khách Hàng & Hợp Đồng B2B (Hợp lệ)",
+    "filename": "CRM_Khach_Hang_2026.csv",
+    "sheet_type": "CSV",
+    "description": "Bảng dữ liệu CRM gồm 18 khách hàng doanh nghiệp, phân khúc và giá trị hợp đồng.",
+    "is_valid_format": true,
+    "is_stable": true,
+    "data": [
+      {"Mã KH": "CRM-01", "Tên Doanh Nghiệp": "Tập Đoàn Tân Long", "Phân Khúc": "Nông Nghiệp", "Quy Mô": "Enterprise", "Hợp Đồng": 450000000, "Tình Trạng": "Đang Duy Trì"},
+      {"Mã KH": "CRM-02", "Tên Doanh Nghiệp": "Công Ty Dược Hậu Giang", "Phân Khúc": "Y Tế / Dược", "Quy Mô": "Enterprise", "Hợp Đồng": 620000000, "Tình Trạng": "Mở Rộng"},
+      {"Mã KH": "CRM-03", "Tên Doanh Nghiệp": "Chuỗi Khách Sạn Mường Thanh", "Phân Khúc": "Du Lịch / F&B", "Quy Mô": "Commercial", "Hợp Đồng": 280000000, "Tình Trạng": "Đang Duy Trì"},
+      {"Mã KH": "CRM-04", "Tên Doanh Nghiệp": "Trường ĐH Bách Khoa", "Phân Khúc": "Giáo Dục", "Quy Mô": "Public Sector", "Hợp Đồng": 350000000, "Tình Trạng": "Mới Ký"},
+      {"Mã KH": "CRM-05", "Tên Doanh Nghiệp": "Chứng Khoán SSI", "Phân Khúc": "Tài Chính", "Quy Mô": "Enterprise", "Hợp Đồng": 890000000, "Tình Trạng": "Mở Rộng"},
+      {"Mã KH": "CRM-06", "Tên Doanh Nghiệp": "Bảo Hiểm Bảo Việt", "Phân Khúc": "Tài Chính", "Quy Mô": "Enterprise", "Hợp Đồng": 540000000, "Tình Trạng": "Đang Duy Trì"},
+      {"Mã KH": "CRM-07", "Tên Doanh Nghiệp": "Logistics Tân Cảng", "Phân Khúc": "Vận Tải", "Quy Mô": "Enterprise", "Hợp Đồng": 410000000, "Tình Trạng": "Đang Duy Trì"},
+      {"Mã KH": "CRM-08", "Tên Doanh Nghiệp": "Bệnh Viện Chợ Rẫy", "Phân Khúc": "Y Tế / Dược", "Quy Mô": "Public Sector", "Hợp Đồng": 750000000, "Tình Trạng": "Mới Ký"}
+    ]
+  },
+  {
+    "id": "sample_wrong_format_pdf",
+    "name": "Tệp Sai Định Dạng (.PDF - Thử Nghiệm Báo Lỗi)",
+    "filename": "Ho_So_Moi_Thau_Du_An.pdf",
+    "sheet_type": "PDF",
+    "description": "Dùng để kiểm thử tính năng: Nếu không phải sheets thì báo lỗi và yêu cầu gửi lại sheets.",
+    "is_valid_format": false,
+    "is_stable": false,
+    "data": []
+  },
+  {
+    "id": "sample_corrupt_sheets",
+    "name": "Bảng Tính Rỗng / Hỏng Cấu Trúc (Thử Nghiệm Báo Lỗi)",
+    "filename": "Bang_Tinh_Chua_On_Dinh.xlsx",
+    "sheet_type": "EXCEL",
+    "description": "Dùng để kiểm thử tính năng: Nếu sheets chưa ổn thì báo lỗi và yêu cầu gửi lại.",
+    "is_valid_format": true,
+    "is_stable": false,
+    "data": []
+  }
+]

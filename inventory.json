@@ -1,0 +1,101 @@
+{
+  "inventory_items": {
+    "SRV-DELL-R750": {
+      "on_hand": 2,
+      "reserved": 1,
+      "available": 1,
+      "lead_time_days_if_out_of_stock": 21,
+      "warehouse_location": "Kho Tổng Hà Nội - Kệ A2",
+      "dispatch_prep_days": 1
+    },
+    "SRV-HPE-DL380": {
+      "on_hand": 0,
+      "reserved": 0,
+      "available": 0,
+      "lead_time_days_if_out_of_stock": 28,
+      "warehouse_location": "Hết hàng - Chờ nhập từ HPE Singapore",
+      "dispatch_prep_days": 2
+    },
+    "SW-CISCO-C9200L": {
+      "on_hand": 8,
+      "reserved": 2,
+      "available": 6,
+      "lead_time_days_if_out_of_stock": 14,
+      "warehouse_location": "Kho Tổng Hà Nội - Kệ B1",
+      "dispatch_prep_days": 1
+    },
+    "FW-FORTI-60F": {
+      "on_hand": 5,
+      "reserved": 0,
+      "available": 5,
+      "lead_time_days_if_out_of_stock": 10,
+      "warehouse_location": "Kho Tổng Hà Nội - Kệ B3",
+      "dispatch_prep_days": 1
+    },
+    "FW-FORTI-100F": {
+      "on_hand": 0,
+      "reserved": 0,
+      "available": 0,
+      "lead_time_days_if_out_of_stock": 18,
+      "warehouse_location": "Hết hàng - Đang đặt từ Hãng",
+      "dispatch_prep_days": 2
+    },
+    "AP-ARUBA-AP505": {
+      "on_hand": 25,
+      "reserved": 5,
+      "available": 20,
+      "lead_time_days_if_out_of_stock": 7,
+      "warehouse_location": "Kho Tổng Hà Nội - Kệ C1",
+      "dispatch_prep_days": 1
+    },
+    "NB-LENOVO-T14": {
+      "on_hand": 15,
+      "reserved": 3,
+      "available": 12,
+      "lead_time_days_if_out_of_stock": 14,
+      "warehouse_location": "Kho Hà Nội - Kệ D2",
+      "dispatch_prep_days": 1
+    },
+    "NB-DELL-LAT5440": {
+      "on_hand": 18,
+      "reserved": 4,
+      "available": 14,
+      "lead_time_days_if_out_of_stock": 10,
+      "warehouse_location": "Kho Hà Nội - Kệ D3",
+      "dispatch_prep_days": 1
+    },
+    "LIC-MS-M365BP": {
+      "on_hand": 9999,
+      "reserved": 0,
+      "available": 9999,
+      "lead_time_days_if_out_of_stock": 1,
+      "warehouse_location": "Cấp phát điện tử CSP Portal",
+      "dispatch_prep_days": 1
+    },
+    "LIC-WIN-SVR2022": {
+      "on_hand": 9999,
+      "reserved": 0,
+      "available": 9999,
+      "lead_time_days_if_out_of_stock": 1,
+      "warehouse_location": "Cấp phát điện tử CSP Portal",
+      "dispatch_prep_days": 1
+    },
+    "SVC-SETUP-SERVER": {
+      "technician_capacity_days": 2,
+      "scheduling_lead_time_days": 3,
+      "is_service": true
+    },
+    "SVC-DEPLOY-NET": {
+      "technician_capacity_days": 3,
+      "scheduling_lead_time_days": 4,
+      "is_service": true
+    },
+    "SVC-MAINT-12M": {
+      "technician_capacity_days": 1,
+      "scheduling_lead_time_days": 2,
+      "is_service": true
+    }
+  },
+  "operations_note": "Bộ phận Vận hành yêu cầu tối thiểu 2 ngày làm việc sau khi hàng về kho để kiểm định xuất xưởng (QA/QC) và lắp ráp linh kiện trước khi bàn giao cho NVKD/Khách hàng."
+}
+

@@ -1,0 +1,43 @@
+[
+  {
+    "id": "RFP-001",
+    "title": "RFP 1: Hồ sơ dự án chuẩn, đầy đủ thông tin, giải pháp trong danh mục (Luồng chuẩn qua HITL)",
+    "customer_name": "Nguyễn Thanh Hải",
+    "customer_company": "Tập đoàn Công nghệ Tài chính FinTech Global",
+    "customer_email": "hai.nt@fintechglobal.vn",
+    "received_date": "2026-11-10",
+    "raw_text": "YÊU CẦU BÁO GIÁ DỰ ÁN HẠ TẦNG MẠNG VĂN PHÒNG MỚI (FINTECH GLOBAL)\n\nKính gửi Công ty Thiên Minh,\n\nFinTech Global đang chuẩn bị chuyển về trụ sở văn phòng mới quy mô 3 tầng tại Cầu Giấy và cần tìm đối tác triển khai trọn gói giải pháp mạng doanh nghiệp:\n\n1. Hạng mục thiết bị yêu cầu:\n- 01 Switch Core L3: Yêu cầu tối thiểu 24 cổng 10G SFP+, định tuyến OSPFv2/v3, bảo hành tối thiểu 24 tháng.\n- 04 Switch Access PoE+: Mỗi switch tối thiểu 24 port Gigabit PoE+, tổng công suất PoE tối thiểu 370W/switch, hỗ trợ 802.1X.\n- 12 Thiết bị phát Wi-Fi doanh nghiệp: Chuẩn Wi-Fi 6, chịu tải tối thiểu 150 người dùng/AP, hỗ trợ roaming mượt mà.\n- 01 Tường lửa thế hệ mới (NGFW): Throughput tối thiểu 2 Gbps, kèm bản quyền bảo mật 1 năm.\n\n2. Dịch vụ kỹ thuật & Bảo trì:\n- Dịch vụ khảo sát vùng phủ sóng, kéo cáp và lắp đặt cấu hình toàn bộ AP và Switch tầng.\n- Gói dịch vụ bảo trì tiêu chuẩn 8x5 SLA 4 giờ trong vòng 12 tháng.\n\n3. Điều kiện bắt buộc & Thương mại:\n- Ngân sách trần dự toán đã được phê duyệt: 350.000.000 VNĐ (đã bao gồm thuế).\n- Thời hạn bàn giao toàn bộ hệ thống: Hoàn thành trước ngày 15/12/2026 (khoảng 35 ngày thi công).\n- Đề nghị mức chiết khấu dự án cho khách hàng mới: 5%.\n- Người đại diện đầu mối: Anh Nguyễn Thanh Hải - Giám đốc Công nghệ Thông tin (CIO).\n\nRất mong nhận được Hồ sơ Đề xuất kỹ thuật, Ma trận đáp ứng tiêu chí và Bản chào giá cạnh tranh từ Thiên Minh.",
+    "expected_outcome": "STANDARD_HITL_APPROVED"
+  },
+  {
+    "id": "RFP-002",
+    "title": "RFP 2: Hồ sơ thiếu điều kiện bắt buộc, thiếu ngân sách & deadline (Kích hoạt nhánh 'Yêu cầu KH bổ sung')",
+    "customer_name": "Phạm Văn Minh",
+    "customer_company": "Công ty TNHH Bất động sản Thiên Kim",
+    "customer_email": "minhpv@thienkimland.com.vn",
+    "received_date": "2026-11-10",
+    "raw_text": "Chào công ty Thiên Minh,\n\nBên mình đang có dự án làm lại toàn bộ hệ thống mạng và Wi-Fi cho tòa nhà văn phòng cho thuê ở Ba Đình. Cần báo giá gấp một số switch cisco hoặc tương đương, mấy con phát wifi mạnh cho các phòng và gói dịch vụ lắp đặt bảo trì. Báo giá sớm giúp mình qua email nhé.",
+    "expected_outcome": "REQUEST_CLARIFICATION"
+  },
+  {
+    "id": "RFP-003",
+    "title": "RFP 3: Nguy cơ chọn gói giá thấp thiếu tính năng & Xung đột lịch triển khai (Kiểm định nghiêm ngặt)",
+    "customer_name": "Trương Quốc Thắng",
+    "customer_company": "Bệnh viện Đa khoa Quốc tế An Sinh",
+    "customer_email": "thang.tq@ansinhhospital.vn",
+    "received_date": "2026-11-10",
+    "raw_text": "THƯ MỜI CHÀO GIÁ DỰ ÁN HỆ THỐNG MẠNG LÕI TRUNG TÂM BỆNH VIỆN AN SINH\n\nKính gửi Ban Giám đốc & Phòng Dự án Công ty Thiên Minh,\n\nĐể đảm bảo an toàn tuyệt đối cho hệ thống dữ liệu bệnh án điện tử và hệ thống xét nghiệm chạy 24/7, Bệnh viện An Sinh yêu cầu chào giá hệ thống mạng với các ĐIỀU KIỆN KỸ THUẬT BẮT BUỘC KHÔNG THAY ĐỔI:\n\n1. Thiết bị Mạng Core L3:\n- Số lượng: 01 Bộ.\n- TIÊU CHÍ BẮT BUỘC 1: Phải trang bị NGUỒN ĐÔI DỰ PHÒNG KÉP (Redundant Power Supply - Dual PSU) có khả năng thay nóng (Hot-swappable) khi một nguồn bị cháy chập.\n- TIÊU CHÍ BẮT BUỘC 2: Phải hỗ trợ giao diện Uplink tốc độ cực cao tối thiểu 100G QSFP28 và hỗ trợ định tuyến nâng cao BGP4 / EVPN-VXLAN.\n- Lưu ý nhà thầu: Tuyệt đối không chào các dòng Switch Core chỉ có 1 nguồn đơn hoặc chỉ hỗ trợ 40G vì sẽ bị loại ngay từ vòng đánh giá kỹ thuật.\n\n2. Tường lửa Bảo mật Trung tâm:\n- Số lượng: 01 Thiết bị.\n- TIÊU CHÍ BẮT BUỘC 3: Phải hỗ trợ tính năng Giải mã sâu SSL Inspection và sẵn sàng kết nối cụm dự phòng High Availability (Active/Passive).\n\n3. Dịch vụ Triển khai:\n- 01 Gói Dịch vụ Triển khai Cấu hình Core Network & Cụm Tường lửa HA chuyên nghiệp.\n\n4. TIẾN ĐỘ THI CÔNG & BÀN GIAO (BẮT BUỘC):\n- Bệnh viện khai trương khu khám bệnh mới vào ngày 21/11/2026, do đó hệ thống bắt buộc phải cấu hình và đo kiểm xong trước ngày 20/11/2026 (trong vòng 10 ngày tới).\n\n5. Ngân sách & Thương mại:\n- Ngân sách duyệt: 320.000.000 VNĐ.\n- Chiết khấu mong muốn: 5%.\n- Người liên hệ: ThS. BS Trương Quốc Thắng - Phó Giám đốc Bệnh viện.",
+    "expected_outcome": "TECHNICAL_REJECTION_OR_SCHEDULE_CONFLICT"
+  },
+  {
+    "id": "RFP-004",
+    "title": "RFP 4: Thiết bị ngoài danh mục (Out-of-Catalog) & Chiết khấu 18% (Kích hoạt Ban Giám đốc phê duyệt)",
+    "customer_name": "Lâm Khánh Toàn",
+    "customer_company": "Tập đoàn Hàng không VietSky Logistics",
+    "customer_email": "toan.lk@vietskylogistics.com",
+    "received_date": "2026-11-10",
+    "raw_text": "HỒ SƠ MỜI THẦU DỰ ÁN HẠ TẦNG TRUNG TÂM ĐIỀU HÀNH BAY VIETSKY\n\nKính gửi Công ty Thiên Minh,\n\nVietSky chuẩn bị đấu thầu gói mua sắm nâng cấp hạ tầng mạng lõi trung tâm điều hành bay với các yêu cầu kỹ thuật đặc biệt:\n\n1. Thiết bị tiêu chuẩn trong danh mục:\n- 02 Bộ Switch Core L3 cao cấp (TM-Core 48X với Dual PSU, 100G Uplink)\n- 06 Switch Access PoE+ 48 Port (TM-Access 48P công suất 740W)\n- 02 Tường lửa thế hệ mới Enterprise (TM-Guard 500 chạy HA Active/Passive)\n- 01 Gói Dịch vụ Triển khai Cấu hình Core Network & HA\n- 01 Gói Bảo trì 24/7 SLA 2 giờ (Enterprise 12 tháng)\n\n2. THIẾT BỊ ĐẶC BIỆT NẰM NGOÀI DANH MỤC TIÊU CHUẨN CỦA THIÊN MINH:\n- 01 Module Bảo mật Mã hóa Phần cứng Chuyên dụng Hàng không Quantum HSM-Crypto Gateway 5000 (Thiết bị chuyên dụng yêu cầu nhập khẩu đặt hàng riêng từ đối tác nước ngoài, không có sẵn trong bảng giá tiêu chuẩn của Thiên Minh). Ước tính chi phí nhập khẩu: 180.000.000 VNĐ.\n\n3. Điều kiện thương mại & Tiến độ:\n- Tổng ngân sách dự toán gói thầu: 1.050.000.000 VNĐ.\n- Thời hạn triển khai: Bàn giao trong vòng 45 ngày (Tháng 1/2027).\n- Yêu cầu chính sách giá: Do VietSky là đối tác chiến lược dài hạn và giá trị hợp đồng rất lớn, chúng tôi yêu cầu mức chiết khấu đặc biệt 18% trên toàn bộ các hạng mục tiêu chuẩn.\n- Người đại diện: Anh Lâm Khánh Toàn - Giám đốc Vận hành Trung tâm Điều hành Bay.\n\nĐề nghị Thiên Minh xác nhận khả năng đáp ứng thiết bị chuyên dụng và chính sách giá để tiến hành ký kết hợp đồng nguyên tắc.",
+    "expected_outcome": "BOARD_OF_DIRECTORS_APPROVAL_REQUIRED"
+  }
+]
+

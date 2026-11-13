@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thiên Minh Solutions — Trợ Lý AI Đánh Giá Yêu Cầu Chào Giá (Lark Base & RFP/RFQ)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* ==========================================================================
+       DELIGHTFUL & SOPHISTICATED MACARON PASTEL THEME (Đáng Yêu, Tinh Tế & Hiện Đại)
+       ========================================================================== */
+    :root {
+      /* Soft Marshmallow Cream Canvas */
+      --bg-page: #faf7f4;
+      --bg-sidebar: #ffffff;
+      --bg-subtle: #f7f3ee;
+      --bg-hover: #f1eae2;
+
+      /* Delicate Pastel Borders */
+      --border-light: #f3ece4;
+      --border-mid: #e7ded4;
+      --border-strong: #d5c8bb;
+
+      /* Gentle & Readable Typography */
+      --text-heading: #2b2e35;
+      --text-body: #4f5562;
+      --text-muted: #79808e;
+      --text-dim: #a6adb9;
+
+      /* Adorable Pastel Accents */
+      /* 🌸 Sakura Pink / Strawberry Milk */
+      --sakura: #ff758c;
+      --sakura-hover: #ff5e79;
+      --sakura-soft: #fff0f3;
+      --sakura-border: #ffccd5;
+      --sakura-text: #b91c47;
+
+      /* 🍑 Peach Apricot */
+      --peach: #ff9f76;
+      --peach-soft: #fff5ed;
+      --peach-border: #ffe2d1;
+      --peach-text: #b45309;
+
+      /* 🍵 Matcha Cream */
+      --matcha: #48bb78;
+      --matcha-soft: #ecfdf5;
+      --matcha-border: #c6f6d5;
+      --matcha-text: #22543d;
+
+      /* 💜 Taro Lavender */
+      --taro: #9f7aea;
+      --taro-soft: #f5f3ff;
+      --taro-border: #e9d8fd;
+      --taro-text: #553c9a;
+
+      /* 🧋 Warm Milk Tea / Sand */
+      --milktea: #b78964;
+      --milktea-soft: #faf5f0;
+      --milktea-border: #eedecf;
+      --milktea-text: #6b4324;
+
+      /* Radii & Pillowy Soft Shadows */
+      --radius-2xl: 26px;
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+
+      --shadow-soft: 0 4px 18px rgba(255, 117, 140, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+      --shadow-card: 0 8px 30px rgba(183, 137, 100, 0.06), 0 2px 10px rgba(0, 0, 0, 0.02);
+      --shadow-card-hover: 0 14px 38px rgba(255, 117, 140, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
+      --shadow-glow: 0 6px 20px rgba(255, 117, 140, 0.28);
+      
+      /* Silky Bouncy Transitions */
+      --ease-bouncy: cubic-bezier(0.34, 1.4, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --trans-fast: all 0.22s var(--ease-smooth);
+      --trans-normal: all 0.28s var(--ease-smooth);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+      font-size: 14px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       COMPACT SIDEBAR (~74px)
+       ========================================================================== */
+    aside.compact-sidebar {
+      width: 74px;
+      min-width: 74px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.25rem 0.4rem;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .sidebar-avatar-pill {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #1e2229;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transition: var(--trans-fast);
+    }
+    .sidebar-avatar-pill:hover {
+      transform: scale(1.08);
+      background: #000000;
+    }
+
+    .sidebar-tabs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-tab-pill {
+      width: 52px;
+      height: 48px;
+      border-radius: var(--radius-xl);
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      transition: var(--trans-normal);
+      border: 1px solid transparent;
+    }
+    .nav-tab-pill:hover {
+      background: var(--sakura-soft);
+      color: var(--sakura-text);
+      transform: translateY(-2px);
+    }
+    .nav-tab-pill.active {
+      background: var(--sakura-soft);
+      border-color: var(--sakura-border);
+      color: var(--sakura-text);
+      box-shadow: 0 4px 14px rgba(255, 117, 140, 0.16);
+    }
+    .nav-tab-pill.locked {
+      opacity: 0.65;
+      cursor: pointer;
+    }
+    .nav-tab-pill .tab-emoji { font-size: 1.25rem; }
+    .nav-tab-pill .tab-subtag {
+      font-size: 0.62rem;
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    /* Floating Tooltip */
+    .nav-tab-pill .pop-tooltip {
+      position: absolute;
+      left: 64px;
+      background: #2d3139;
+      color: #ffffff;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.74rem;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: var(--trans-fast);
+      z-index: 150;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+    .nav-tab-pill:hover .pop-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .sidebar-chat-wrapper {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-bubble-trigger {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--peach-soft);
+      border: 1px solid var(--peach-border);
+      color: var(--peach-text);
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 159, 118, 0.2);
+      transition: var(--trans-normal);
+    }
+    .chat-bubble-trigger:hover {
+      transform: scale(1.1) rotate(5deg);
+      background: #ffe9dc;
+    }
+
+    /* ==========================================================================
+       MAIN WORKSPACE
+       ========================================================================== */
+    main.main-workspace {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 100vh;
+    }
+
+    /* Top Navbar */
+    header.cute-topbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-light);
+      padding: 0.95rem 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .topbar-info h1 {
+      font-size: 1.12rem;
+      color: var(--text-heading);
+      letter-spacing: -0.2px;
+      font-weight: 800;
+    }
+    .topbar-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .topbar-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .cute-badge-pill {
+      background: var(--matcha-soft);
+      border: 1px solid var(--matcha-border);
+      color: var(--matcha-text);
+      padding: 0.45rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cute-dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--matcha);
+      animation: heartPulse 2s infinite ease-in-out;
+    }
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .btn-cute-chat {
+      background: #ffffff;
+      border: 1px solid var(--border-mid);
+      color: var(--text-heading);
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: var(--shadow-soft);
+      transition: var(--trans-fast);
+    }
+    .btn-cute-chat:hover {
+      background: var(--peach-soft);
+      border-color: var(--peach-border);
+      color: var(--peach-text);
+      transform: translateY(-1px);
+    }
+
+    /* Stepper Component */
+    .workflow-stepper-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-2xl);
+      padding: 1.25rem 1.75rem;
+      margin: 1.5rem 2.25rem 1rem 2.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stepper-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.15rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .stepper-header-row h3 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .stepper-header-row span {
+      font-size: 0.78rem;
+      color: var(--text-heading);
+      font-weight: 700;
+    }
+
+    .stepper-nodes-track {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    .stepper-line-bg {
+      position: absolute;
+      top: 18px;
+      left: 30px;
+      right: 30px;
+      height: 3px;
+      background: var(--border-light);
+      z-index: 1;
+    }
+    .stepper-line-active {
+      position: absolute;
+      top: 18px;
+      left: 30px;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff758c 0%, #ff9f76 100%);
+      z-index: 2;
+      transition: width 0.4s var(--ease-smooth);
+    }
+
+    .workflow-step-node {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 110px;
+      text-align: center;
+    }
+    .step-circle-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--border-strong);
+      color: var(--text-muted);
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: var(--trans-normal);
+    }
+    .step-title-text {
+      margin-top: 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      line-height: 1.3;
+      transition: var(--trans-fast);
+    }
+
+    .workflow-step-node.active .step-circle-badge {
+      background: #1e2229;
+      border-color: #1e2229;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      transform: scale(1.08);
+    }
+    .workflow-step-node.active .step-title-text {
+      color: var(--text-heading);
+      font-weight: 800;
+    }
+
+    .workflow-step-node.completed .step-circle-badge {
+      background: var(--matcha);
+      border-color: var(--matcha);
+      color: #ffffff;
+    }
+    .workflow-step-node.completed .step-title-text {
+      color: var(--matcha-text);
+    }
+
+    .workflow-step-node.locked {
+      cursor: pointer;
+    }
+    .workflow-step-node.locked .step-circle-badge {
+      border-style: dashed;
+      background: #faf8f5;
+      color: var(--text-dim);
+    }
+
+    /* Content Cards */
+    .panel-view-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-2xl);
+      padding: 1.85rem;
+      margin: 0 2.25rem 2.25rem 2.25rem;
+      box-shadow: var(--shadow-card);
+      flex: 1;
+    }
+
+    .workflow-panel-stage {
+      display: none;
+    }
+    .workflow-panel-stage.active {
+      display: block;
+      animation: fadeInCute 0.3s var(--ease-smooth);
+    }
+    @keyframes fadeInCute {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stage-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.35rem;
+      padding-bottom: 1.15rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .stage-header-row h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .stage-header-row p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .cute-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .tag-lark-base { background: #e8f4fd; border: 1px solid #c7e3fc; color: #1967d2; }
+    .tag-ai-skill { background: var(--sakura-soft); border: 1px solid var(--sakura-border); color: var(--sakura-text); }
+    .tag-hitl-gate { background: var(--peach-soft); border: 1px solid var(--peach-border); color: var(--peach-text); }
+    .tag-success { background: var(--matcha-soft); border: 1px solid var(--matcha-border); color: var(--matcha-text); }
+
+    .cute-guide-banner {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.35rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .guide-emoji { font-size: 1.35rem; }
+    .guide-text { font-size: 0.82rem; color: var(--text-body); line-height: 1.5; }
+    .guide-text strong { color: var(--text-heading); }
+
+    /* Drag & Drop Upload Zone */
+    .file-dropzone-cute {
+      border: 2px dashed var(--sakura-border);
+      background: var(--sakura-soft);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--trans-fast);
+      margin-bottom: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .file-dropzone-cute:hover, .file-dropzone-cute.dragover {
+      border-color: var(--sakura);
+      background: #ffe6ec;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 117, 140, 0.15);
+    }
+    .file-dropzone-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.45rem;
+    }
+    .file-dropzone-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--sakura-text);
+      margin-bottom: 0.2rem;
+    }
+    .file-dropzone-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn-cute {
+      padding: 0.65rem 1.35rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--trans-fast);
+      text-decoration: none;
+    }
+    .btn-cute:hover {
+      transform: translateY(-2px);
+    }
+    .btn-cute:active {
+      transform: translateY(0);
+    }
+    .btn-cute-sakura {
+      background: linear-gradient(135deg, #ff758c 0%, #ff8da1 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3);
+    }
+    .btn-cute-sakura:hover {
+      background: linear-gradient(135deg, #ff5e79 0%, #ff758c 100%);
+      box-shadow: 0 6px 20px rgba(255, 117, 140, 0.4);
+    }
+    .btn-cute-peach {
+      background: var(--peach-soft);
+      border-color: var(--peach-border);
+      color: var(--peach-text);
+    }
+    .btn-cute-outline {
+      background: #ffffff;
+      border-color: var(--border-mid);
+      color: var(--text-body);
+    }
+    .btn-cute-outline:hover {
+      background: var(--bg-hover);
+    }
+
+    /* Cute Tables */
+    .cute-table-box {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 1.35rem;
+      background: #ffffff;
+    }
+    table.cute-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+    table.cute-table th {
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      font-weight: 800;
+      padding: 0.85rem 1.15rem;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    table.cute-table td {
+      padding: 0.95rem 1.15rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+    table.cute-table tr:last-child td { border-bottom: none; }
+    table.cute-table tr:hover td { background: #fffcfb; }
+
+    /* Alert Boxes */
+    .cute-alert-box {
+      border-radius: var(--radius-xl);
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.95rem;
+    }
+    .alert-peach { background: var(--peach-soft); border: 1px solid var(--peach-border); color: var(--peach-text); }
+    .alert-matcha { background: var(--matcha-soft); border: 1px solid var(--matcha-border); color: var(--matcha-text); }
+    .alert-pink { background: var(--sakura-soft); border: 1px solid var(--sakura-border); color: var(--sakura-text); }
+
+    .cute-code-pane {
+      background: #23272e;
+      color: #e6edf3;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-lg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .cute-form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text-heading);
+      background: #ffffff;
+      outline: none;
+      transition: var(--trans-fast);
+    }
+    .cute-form-input:focus {
+      border-color: var(--sakura);
+      box-shadow: 0 0 0 3px rgba(255, 117, 140, 0.15);
+    }
+
+    .stepper-nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* Charming Empty State */
+    .charming-empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+    }
+    .empty-halo-icon {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+    }
+    .charming-empty-state h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.45rem;
+    }
+    .charming-empty-state p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.55;
+      margin-bottom: 1.35rem;
+    }
+
+    /* Chatbot Drawer */
+    .chatbot-drawer-panel {
+      position: fixed;
+      right: -390px;
+      top: 0;
+      width: 390px;
+      height: 100vh;
+      background: #ffffff;
+      border-left: 1px solid var(--border-light);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chatbot-drawer-panel.open {
+      right: 0;
+    }
+
+    .chat-header-bar {
+      padding: 1.15rem 1.35rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--sakura-soft);
+    }
+    .chat-header-bar h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--sakura-text);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .chat-header-bar p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .chat-close-icon {
+      background: transparent;
+      border: none;
+      font-size: 1.15rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .chat-close-icon:hover { color: var(--sakura-text); }
+
+    .chat-messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      background: #fffdfb;
+    }
+
+    .chat-bubble {
+      max-width: 86%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-lg);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    .chat-bubble.bot {
+      align-self: flex-start;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      color: var(--text-body);
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .chat-bubble.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 8px rgba(255, 117, 140, 0.2);
+    }
+
+    .chat-quick-strip {
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      background: #ffffff;
+      border-top: 1px solid var(--border-light);
+    }
+    .quick-chip {
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #ffffff;
+      border: 1px solid var(--border-mid);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--trans-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .quick-chip:hover {
+      background: var(--sakura-soft);
+      color: var(--sakura-text);
+      border-color: var(--sakura-border);
+      transform: translateY(-1px);
+    }
+
+    .chat-input-row {
+      padding: 0.85rem 1rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      gap: 0.65rem;
+      background: #ffffff;
+    }
+    .chat-input-box {
+      flex: 1;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--border-mid);
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      outline: none;
+    }
+    .chat-input-box:focus { border-color: var(--sakura); }
+    .chat-send-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--sakura);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--trans-fast);
+    }
+    .chat-send-btn:hover { background: var(--sakura-hover); }
+
+    /* Floating Chat Button */
+    .floating-chat-bubble {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #ffffff;
+      border: 1px solid var(--sakura-border);
+      box-shadow: 0 8px 24px rgba(255, 117, 140, 0.16);
+      padding: 0.65rem 1.25rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--sakura-text);
+      cursor: pointer;
+      z-index: 95;
+      transition: var(--trans-normal);
+    }
+    .floating-chat-bubble:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(255, 117, 140, 0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       COMPACT SIDEBAR (~74px)
+       ========================================================================== -->
+  <aside class="compact-sidebar">
+    <div class="sidebar-avatar-pill" onclick="goToStep(1)" title="Thiên Minh Solutions">
+      <span>TM</span>
+    </div>
+
+    <ul class="sidebar-tabs-list">
+      <li class="nav-tab-pill active" id="sideTab1" onclick="goToStep(1)">
+        <span class="tab-emoji">📥</span>
+        <span class="tab-subtag">Lark</span>
+        <div class="pop-tooltip">Bước 1: Tiếp Nhận Dữ Liệu</div>
+      </li>
+
+      <li class="nav-tab-pill locked" id="sideTab2" onclick="tryNavigateStep(2)">
+        <span class="tab-emoji">🔍</span>
+        <span class="tab-subtag">KN 1</span>
+        <div class="pop-tooltip">Kỹ Năng 1: Bóc Tách & Hợp Lệ?</div>
+      </li>
+
+      <li class="nav-tab-pill locked" id="sideTab3" onclick="tryNavigateStep(3)">
+        <span class="tab-emoji">⚙️</span>
+        <span class="tab-subtag">KN 2</span>
+        <div class="pop-tooltip">Kỹ Năng 2: Thẩm Định Kỹ Thuật</div>
+      </li>
+
+      <li class="nav-tab-pill locked" id="sideTab4" onclick="tryNavigateStep(4)">
+        <span class="tab-emoji">💰</span>
+        <span class="tab-subtag">KN 3</span>
+        <div class="pop-tooltip">Kỹ Năng 3: Triển Khai & Giá</div>
+      </li>
+
+      <li class="nav-tab-pill locked" id="sideTab5" onclick="tryNavigateStep(5)">
+        <span class="tab-emoji">📑</span>
+        <span class="tab-subtag">Hợp</span>
+        <div class="pop-tooltip">Hợp Nhất Báo Cáo & Tasklist</div>
+      </li>
+
+      <li class="nav-tab-pill locked" id="sideTab6" onclick="tryNavigateStep(6)">
+        <span class="tab-emoji">✍️</span>
+        <span class="tab-subtag">HITL</span>
+        <div class="pop-tooltip">HITL: Phê Duyệt & Xuất Bản</div>
+      </li>
+    </ul>
+
+    <div class="sidebar-chat-wrapper">
+      <div class="chat-bubble-trigger" onclick="toggleChatbot()" title="Trợ Lý Chatbot AI">
+        <span>💬</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       MAIN WORKSPACE
+       ========================================================================== -->
+  <main class="main-workspace">
+    
+    <!-- Top Header -->
+    <header class="cute-topbar">
+      <div class="topbar-info">
+        <h1>Quy Trình Đánh Giá Hồ Sơ RFP/RFQ — Thiên Minh Solutions</h1>
+        <p>Chuẩn hóa liên kết Lark Base ➔ 3 Kỹ Năng AI Agent ➔ Các Điểm Chạm HITL</p>
+      </div>
+
+      <div class="topbar-pills">
+        <div class="cute-badge-pill">
+          <div class="cute-dot-pulse"></div>
+          <span>Gemini 3.8 Flash • Lark Base Sync</span>
+        </div>
+
+        <button class="btn-cute-chat" onclick="toggleChatbot()">
+          <span>💬 Trợ Lý Chatbot</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- WORKFLOW STEPPER -->
+    <div class="workflow-stepper-card">
+      <div class="stepper-header-row">
+        <h3>
+          <span>■</span> Các Điểm Chạm Nghiệp Vụ Theo Sơ Đồ Thiên Minh Company
+        </h3>
+        <span id="currentStepIndicatorText">Bước 1: Bắt đầu — Tiếp nhận hồ sơ RFP/RFQ (Lark Base)</span>
+      </div>
+
+      <div class="stepper-nodes-track">
+        <div class="stepper-line-bg"></div>
+        <div class="stepper-line-active" id="stepperLineActive"></div>
+
+        <!-- Node 1 -->
+        <div class="workflow-step-node active" id="wfNode1" onclick="goToStep(1)">
+          <div class="step-circle-badge">1</div>
+          <div class="step-title-text" id="nodeTitle1">Bắt Đầu: Tiếp Nhận Dữ Liệu</div>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="workflow-step-node locked" id="wfNode2" onclick="tryNavigateStep(2)">
+          <div class="step-circle-badge">2</div>
+          <div class="step-title-text" id="nodeTitle2">KN 1: Bóc Tách & Hợp Lệ?</div>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="workflow-step-node locked" id="wfNode3" onclick="tryNavigateStep(3)">
+          <div class="step-circle-badge">3</div>
+          <div class="step-title-text" id="nodeTitle3">KN 2: Thẩm Định Kỹ Thuật</div>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="workflow-step-node locked" id="wfNode4" onclick="tryNavigateStep(4)">
+          <div class="step-circle-badge">4</div>
+          <div class="step-title-text" id="nodeTitle4">KN 3: Triển Khai & Giá</div>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="workflow-step-node locked" id="wfNode5" onclick="tryNavigateStep(5)">
+          <div class="step-circle-badge">5</div>
+          <div class="step-title-text" id="nodeTitle5">Hợp Nhất Báo Cáo & Tasklist</div>
+        </div>
+
+        <!-- Node 6 -->
+        <div class="workflow-step-node locked" id="wfNode6" onclick="tryNavigateStep(6)">
+          <div class="step-circle-badge">6</div>
+          <div class="step-title-text" id="nodeTitle6">HITL Duyệt & Xuất Bản</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN PANEL VIEW -->
+    <div class="panel-view-card">
+
+      <!-- ==================================================================
+           GIAI ĐOẠN 1: BẮT ĐẦU — TIẾP NHẬN DỮ LIỆU HỒ SƠ RFP/RFQ
+           (BAN ĐẦU CHỈ ĐỂ NHẬP DỮ LIỆU, KHÔNG HIỆN DỮ LIỆU GIẢ LẬP)
+           ================================================================== -->
+      <div class="workflow-panel-stage active" id="panelStage1">
+        <div class="stage-header-row">
+          <div>
+            <h2><span>📥 BẮT ĐẦU: Tiếp Nhận Dữ Liệu Hồ Sơ (RFP/RFQ)</span></h2>
+            <p>Hệ thống tiếp nhận tệp Sheets (.xlsx, .csv), văn bản Word/PDF hoặc nhập trực tiếp yêu cầu chào giá dự án.</p>
+          </div>
+          <span class="cute-tag-pill tag-lark-base">ĐIỂM TIẾP NHẬN DỮ LIỆU</span>
+        </div>
+
+        <!-- FILE UPLOAD DROPZONE -->
+        <div class="file-dropzone-cute" id="fileDropZone" onclick="document.getElementById('inpRfpFile').click()">
+          <input type="file" id="inpRfpFile" accept=".txt,.json,.csv,.doc,.docx,.xlsx" style="display:none;" onchange="handleRfpFileUpload(event)">
+          <div class="file-dropzone-icon" id="dropzoneIcon">📁</div>
+          <div class="file-dropzone-title" id="dropzoneTitle">Tải lên tệp Sheets (.xlsx, .csv) hoặc tài liệu dự án (.docx, .txt)</div>
+          <div class="file-dropzone-sub" id="dropzoneSub">Nhấp để chọn tệp hoặc kéo thả tệp trực tiếp vào khung này</div>
+        </div>
+
+        <!-- ALERT BANNER WHEN FILE OR DATA IS READY -->
+        <div id="dataReadyNoticeBar" style="display:none; margin-bottom:1.25rem;"></div>
+
+        <!-- INPUT FORM -->
+        <div style="display:grid; grid-template-columns: 1fr 1.6fr; gap:1.35rem; background:var(--bg-subtle); padding:1.45rem; border-radius:var(--radius-xl); border:1px solid var(--border-light); margin-bottom:1.25rem;">
+          <div>
+            <div style="margin-bottom:0.85rem;">
+              <label style="font-size:0.75rem; font-weight:700; color:var(--text-heading); display:block; margin-bottom:0.3rem;">Mã Dự Án / Hồ Sơ</label>
+              <input type="text" id="inpRfpId" class="cute-form-input" placeholder="Ví dụ: RFP-2026-001" style="font-weight:700;">
+            </div>
+            <div style="margin-bottom:0.85rem;">
+              <label style="font-size:0.75rem; font-weight:700; color:var(--text-heading); display:block; margin-bottom:0.3rem;">Doanh Nghiệp Khách Hàng</label>
+              <input type="text" id="inpCompany" class="cute-form-input" placeholder="Tên công ty hoặc cơ quan mời thầu">
+            </div>
+            <div style="margin-bottom:0.85rem;">
+              <label style="font-size:0.75rem; font-weight:700; color:var(--text-heading); display:block; margin-bottom:0.3rem;">Đại Diện Liên Hệ & Email</label>
+              <input type="text" id="inpContact" class="cute-form-input" placeholder="Họ tên người phụ trách <email@company.com>">
+            </div>
+
+            <!-- DISCREET QUICK SAMPLE PILLS (FOR RAPID TESTING WITHOUT FAKE CARDS) -->
+            <div style="margin-top:1.15rem; padding-top:0.85rem; border-top:1px dashed var(--border-mid);">
+              <span style="font-size:0.72rem; color:var(--text-muted); font-weight:700; display:block; margin-bottom:0.45rem;">
+                💡 Hoặc nạp nhanh văn bản mẫu để kiểm thử:
+              </span>
+              <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                <button type="button" class="quick-chip" onclick="fillQuickSample(0)">📋 Mẫu 1: Dự án chuẩn (Đủ thông tin)</button>
+                <button type="button" class="quick-chip" onclick="fillQuickSample(1)">⚠️ Mẫu 2: Dự án thiếu ngân sách / SLA</button>
+                <button type="button" class="quick-chip" onclick="fillQuickSample(2)">📅 Mẫu 3: Dự án y tế (Tiến độ gấp Tuần 47)</button>
+                <button type="button" class="quick-chip" onclick="fillQuickSample(3)">⚙️ Mẫu 4: Dự án thiết bị ngoài catalog</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:0.75rem; font-weight:700; color:var(--text-heading); display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+              <span>Văn Bản Yêu Cầu Chào Giá / RFP / RFQ</span>
+              <span style="color:var(--sakura-text); font-weight:700;">Hỗ trợ dán trực tiếp hoặc bóc tách từ tệp</span>
+            </label>
+            <textarea id="inpText" class="cute-form-input" style="min-height:265px; font-family:'JetBrains Mono', monospace; font-size:0.78rem; line-height:1.55;" placeholder="Nhập hoặc dán nội dung yêu cầu chào giá dự án vào đây...&#10;&#10;Ví dụ:&#10;- Hạng mục: 02 Switch Core L3, 08 Switch PoE+, 01 Tường lửa NGFW HA, 20 AP Wi-Fi 6&#10;- Tiêu chí bắt buộc: Nguồn dự phòng kép (Dual PSU), thông lượng 100G, hỗ trợ HA&#10;- Ngân sách dự toán trần: 350,000,000 VNĐ&#10;- Thời hạn thi công: 35 ngày kể từ ngày ký hợp đồng"></textarea>
+          </div>
+        </div>
+
+        <!-- PROGRESSIVE CALCULATION NOTICE BANNER -->
+        <div id="unlockedRoadmapAlert" style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-xl); padding:1.15rem 1.35rem; margin-bottom:1.25rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.45rem;">
+            <strong style="font-size:0.82rem; color:var(--text-heading); display:flex; align-items:center; gap:0.4rem;">
+              <span>🔒 Tiến Trình Tính Toán Tự Động</span>
+            </strong>
+            <span class="cute-tag-pill tag-hitl-gate" style="font-size:0.68rem;" id="roadmapStatusBadge">Chưa có số liệu • Đang chờ nạp hồ sơ</span>
+          </div>
+          <p style="font-size:0.76rem; color:var(--text-muted); line-height:1.45;">
+            Ban đầu hệ thống <strong>hoàn toàn không có dữ liệu tính toán giả lập nào</strong>. Ngay sau khi bạn nhập hồ sơ và nhấn nút bên dưới, AI sẽ bắt đầu tính toán và <strong>tự động xuất hiện các con số phân tích thực tế</strong> ở từng bước tiếp theo.
+          </p>
+        </div>
+
+        <div class="stepper-nav-footer">
+          <span style="font-size:0.78rem; color:var(--text-muted);" id="step1PromptStatus">Trạng thái: Trống hoàn toàn. Đang chờ bạn nhập dữ liệu hoặc tải tệp lên để bắt đầu tính toán.</span>
+          <div style="display:flex; gap:0.65rem;">
+            <button type="button" class="btn-cute btn-cute-outline" onclick="resetAppToCleanState()">
+              <span>🔄 Xóa Trắng Form</span>
+            </button>
+            <button class="btn-cute btn-cute-sakura" id="btnExecuteStep1" onclick="executeStep1AndAdvance()">
+              <span>✨ Bắt Đầu Phân Tích & Tính Toán Dữ Liệu ➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           GIAI ĐOẠN 2: KỸ NĂNG 1 - BÓC TÁCH & RẼ NHÁNH "CÓ ĐỦ DỮ LIỆU HỢP LỆ?"
+           ================================================================== -->
+      <div class="workflow-panel-stage" id="panelStage2">
+        <div class="stage-header-row">
+          <div>
+            <h2><span>🤖 KỸ NĂNG 1 - AI AGENT: Bóc Tách & Phân Tích Hồ Sơ</span></h2>
+            <p>Trích xuất: hạng mục, thông số kỹ thuật, điều kiện bắt buộc, deadline, ngân sách. Quyết định: Có đủ dữ liệu hợp lệ?</p>
+          </div>
+          <span class="cute-tag-pill tag-ai-skill">Kỹ Năng 1 • AI Agent</span>
+        </div>
+
+        <!-- Empty State -->
+        <div class="charming-empty-state" id="emptyStateStage2">
+          <div class="empty-halo-icon">🔍</div>
+          <h3>Chưa Có Dữ Liệu Bóc Tách</h3>
+          <p>Hồ sơ chưa được gửi phân tích. Bạn vui lòng quay lại Bước 1, nhập dữ liệu rồi nhấn nút <strong>"✨ Bắt Đầu Phân Tích & Tính Toán Dữ Liệu"</strong> nhé!</p>
+          <button class="btn-cute btn-cute-sakura" onclick="goToStep(1)">Quay lại Bước 1</button>
+        </div>
+
+        <!-- Content -->
+        <div id="contentStage2" style="display:none;">
+          <!-- Gate 1 Alert -->
+          <div id="gate1AlertBox"></div>
+
+          <h4 style="font-size:0.88rem; font-weight:800; margin:1.25rem 0 0.5rem 0; color:var(--text-heading);">
+            Bảng Đối Soát 4 Trường Dữ Liệu Trọng Yếu:
+          </h4>
+          <div class="cute-table-box">
+            <table class="cute-table" id="tableExtractionCheck">
+              <thead>
+                <tr>
+                  <th>Trường Dữ Liệu Trích Xuất</th>
+                  <th>Trạng Thái Trong Hồ Sơ</th>
+                  <th>Chi Tiết Bóc Tách</th>
+                  <th>Đánh Giá Hợp Lệ Của AI</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <!-- HITL Sales if missing info -->
+          <div id="hitlSalesBox" style="margin-top:1.5rem;"></div>
+
+          <div class="stepper-nav-footer">
+            <button class="btn-cute btn-cute-outline" onclick="goToStep(1)">⬅ Quay Lại Bước 1</button>
+            <button class="btn-cute btn-cute-sakura" id="btnNextFromStage2" onclick="goToStep(3)">
+              <span>Có Đủ Dữ Liệu: Sang KỸ NĂNG 2 (Thẩm Định Kỹ Thuật) ➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           GIAI ĐOẠN 3: KỸ NĂNG 2 - THẨM ĐỊNH KỸ THUẬT & RẼ NHÁNH "CÓ ĐÁP ỨNG?"
+           ================================================================== -->
+      <div class="workflow-panel-stage" id="panelStage3">
+        <div class="stage-header-row">
+          <div>
+            <h2><span>🤖 KỸ NĂNG 2 - AI AGENT: Thẩm Định Kỹ Thuật</span></h2>
+            <p>Đối chiếu danh mục thiết bị, chặn gói thiếu tính năng, nhận diện yêu cầu ngoài danh mục.</p>
+          </div>
+          <span class="cute-tag-pill tag-ai-skill">Kỹ Năng 2 • AI Agent</span>
+        </div>
+
+        <!-- Empty State -->
+        <div class="charming-empty-state" id="emptyStateStage3">
+          <div class="empty-halo-icon">⚙️</div>
+          <h3>Chưa Có Dữ Liệu Thẩm Định Kỹ Thuật</h3>
+          <p>Hệ thống cần hoàn tất Kỹ Năng 1 để chuyển sang thẩm định kỹ thuật. Hãy bắt đầu từ Bước 1 nhé!</p>
+          <button class="btn-cute btn-cute-sakura" onclick="goToStep(1)">Quay lại Bước 1</button>
+        </div>
+
+        <!-- Content -->
+        <div id="contentStage3" style="display:none;">
+          <div id="antiSpecAlertBox"></div>
+          <div id="techFeasibilityGateAlert"></div>
+
+          <h4 style="font-size:0.88rem; font-weight:800; margin:1.25rem 0 0.5rem 0; color:var(--text-heading);">
+            Ma Trận Đối Chiếu Danh Mục & Tiêu Chí Bắt Buộc:
+          </h4>
+          <div class="cute-table-box">
+            <table class="cute-table" id="tableStage3Spec">
+              <thead>
+                <tr>
+                  <th style="width:45px;">STT</th>
+                  <th>Yêu Cầu Kỹ Thuật RFP</th>
+                  <th>Tiêu Chí Bắt Buộc</th>
+                  <th>Thiết Bị Đề Xuất</th>
+                  <th>Mức Đáp Ứng</th>
+                  <th>Bằng Chứng Datasheet</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div id="hitlSurveyBox" style="margin-top:1.5rem;"></div>
+          <div class="stepper-nav-footer">
+            <button class="btn-cute btn-cute-outline" onclick="goToStep(2)">⬅ Quay Lại Kỹ Năng 1</button>
+            <button class="btn-cute btn-cute-sakura" onclick="goToStep(4)">
+              <span>Kỹ Thuật Đáp Ứng: Sang KỸ NĂNG 3 (Triển Khai & Giá) ➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           GIAI ĐOẠN 4: KỸ NĂNG 3 - THẨM ĐỊNH TRIỂN KHAI & GIÁ
+           ================================================================== -->
+      <div class="workflow-panel-stage" id="panelStage4">
+        <div class="stage-header-row">
+          <div>
+            <h2><span>🤖 KỸ NĂNG 3 - AI AGENT: Thẩm Định Triển Khai & Giá</span></h2>
+            <p>Đối soát lịch nhân sự + Tính giá, áp chính sách chiết khấu, biên lợi nhuận.</p>
+          </div>
+          <span class="cute-tag-pill tag-ai-skill">Kỹ Năng 3 • AI Agent</span>
+        </div>
+
+        <!-- Empty State -->
+        <div class="charming-empty-state" id="emptyStateStage4">
+          <div class="empty-halo-icon">💰</div>
+          <h3>Chưa Có Dữ Liệu Giá & Lịch Thi Công</h3>
+          <p>Vui lòng hoàn thành các bước trước để hệ thống tiến hành đối soát lịch và tính toán dự toán.</p>
+          <button class="btn-cute btn-cute-sakura" onclick="goToStep(1)">Quay lại Bước 1</button>
+        </div>
+
+        <!-- Content -->
+        <div id="contentStage4" style="display:none;">
+          <div id="scheduleAnalysisBox"></div>
+          <div id="stage4PricingTiles"></div>
+
+          <h4 style="font-size:0.88rem; font-weight:800; margin:1.35rem 0 0.5rem 0; color:var(--text-heading);">
+            Bảng Dự Toán Chi Tiết Hạng Mục Thiết Bị & Dịch Vụ:
+          </h4>
+          <div class="cute-table-box">
+            <table class="cute-table" id="tableStage4Pricing">
+              <thead>
+                <tr>
+                  <th style="width:45px;">STT</th>
+                  <th>Tên Giải Pháp / Thiết Bị</th>
+                  <th>Mã SKU</th>
+                  <th>Số Lượng</th>
+                  <th>Đơn Giá Niêm Yết</th>
+                  <th>Thành Tiền (VNĐ)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="stepper-nav-footer">
+            <button class="btn-cute btn-cute-outline" onclick="goToStep(3)">⬅ Quay Lại Kỹ Năng 2</button>
+            <button class="btn-cute btn-cute-sakura" onclick="goToStep(5)">
+              <span>Tiếp Tục: HỢP NHẤT BÁO CÁO & TÀI LIỆU ➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           GIAI ĐOẠN 5: HỢP NHẤT BÁO CÁO & TÀI LIỆU
+           ================================================================== -->
+      <div class="workflow-panel-stage" id="panelStage5">
+        <div class="stage-header-row">
+          <div>
+            <h2><span>📑 HỢP NHẤT BÁO CÁO & TÀI LIỆU</span></h2>
+            <p>Hợp nhất tự động: Ma trận đáp ứng + Nháp chào giá + Tasklist phối hợp liên phòng ban.</p>
+          </div>
+          <span class="cute-tag-pill tag-lark-base">Hợp Nhất Tài Liệu</span>
+        </div>
+
+        <!-- Empty State -->
+        <div class="charming-empty-state" id="emptyStateStage5">
+          <div class="empty-halo-icon">📑</div>
+          <h3>Chưa Có Tài Liệu Được Hợp Nhất</h3>
+          <p>Hồ sơ đề xuất và tasklist sẽ được tổng hợp tự động sau khi AI hoàn tất phân tích giá và kỹ thuật.</p>
+          <button class="btn-cute btn-cute-sakura" onclick="goToStep(1)">Quay lại Bước 1</button>
+        </div>
+
+        <!-- Content -->
+        <div id="contentStage5" style="display:none;">
+          <div style="display:grid; grid-template-columns: 1.1fr 1fr; gap:1.5rem;">
+            <div>
+              <h4 style="font-size:0.88rem; font-weight:800; color:var(--text-heading); margin-bottom:0.6rem;">
+                📋 Tasklist Phối Hợp Liên Phòng Ban:
+              </h4>
+              <div>
+                <div style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:0.95rem; margin-bottom:0.6rem;">
+                  <strong style="color:var(--text-heading); font-size:0.84rem;">👤 Phòng Kinh Doanh (Sales):</strong>
+                  <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">Hoàn tất dự thảo báo giá, chuẩn bị tài liệu năng lực doanh nghiệp và bảo lãnh dự thầu.</p>
+                </div>
+                <div style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:0.95rem; margin-bottom:0.6rem;">
+                  <strong style="color:var(--text-heading); font-size:0.84rem;">🛠️ Phòng Kỹ Thuật (Solution Architects):</strong>
+                  <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">Ký duyệt ma trận tuân thủ kỹ thuật, chuẩn bị sơ đồ Topology và tài liệu thiết kế LLD.</p>
+                </div>
+                <div style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:0.95rem;">
+                  <strong style="color:var(--text-heading); font-size:0.84rem;">🚚 Phòng Vận Hành & Kho Vận (PM / Ops):</strong>
+                  <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">Kiểm tra tồn khả dụng, bố trí đội ngũ kỹ sư CCIE/CCNP theo lịch công tác đã chốt.</p>
+                </div>
+              </div>
+
+              <h4 style="font-size:0.88rem; font-weight:800; color:var(--text-heading); margin:1.35rem 0 0.6rem 0;">
+                Tờ Trình Phê Duyệt Cấp Quản Lý:
+              </h4>
+              <div class="cute-code-pane" id="stage5DocketPreview" style="max-height:200px;"></div>
+            </div>
+
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+                <h4 style="font-size:0.88rem; font-weight:800; color:var(--text-heading);">Nháp Chào Giá & Thư Đề Xuất Chính Thức:</h4>
+                <button class="btn-cute btn-cute-outline" style="padding:0.35rem 0.75rem; font-size:0.75rem;" onclick="copyProposalDraft()">📋 Sao Chép</button>
+              </div>
+              <div class="cute-code-pane" id="stage5ProposalDraft" style="max-height:430px;"></div>
+            </div>
+          </div>
+
+          <div class="stepper-nav-footer">
+            <button class="btn-cute btn-cute-outline" onclick="goToStep(4)">⬅ Quay Lại Kỹ Năng 3</button>
+            <button class="btn-cute btn-cute-sakura" onclick="goToStep(6)">
+              <span>Tiếp Tục: Kiểm Tra Thẩm Quyền & HITL Phê Duyệt ➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           GIAI ĐOẠN 6: HITL PHÊ DUYỆT & ĐIỀU PHỐI ➔ KẾT THÚC
+           ================================================================== -->
+      <div class="workflow-panel-stage" id="panelStage6">
+        <div class="stage-header-row">
+          <div>
+            <h2><span>✍️ HITL: Phê Duyệt & Điều Phối ➔ KẾT THÚC</span></h2>
+            <p>Vượt chiết khấu ➔ Trình duyệt quản lý | Trùng lịch ➔ Vận hành điều phối | Hàng đặc thù ➔ Kỹ thuật duyệt.</p>
+          </div>
+          <span class="cute-tag-pill tag-hitl-gate" id="stage6AuthBadge">Kiểm Tra Thẩm Quyền</span>
+        </div>
+
+        <!-- Empty State -->
+        <div class="charming-empty-state" id="emptyStateStage6">
+          <div class="empty-halo-icon">✍️</div>
+          <h3>Chưa Có Hồ Sơ Chờ Phê Duyệt</h3>
+          <p>Sau khi hoàn tất hợp nhất tài liệu, biên bản thẩm định và nút xuất bản báo cáo sẽ hiển thị tại đây.</p>
+          <button class="btn-cute btn-cute-sakura" onclick="goToStep(1)">Quay lại Bước 1</button>
+        </div>
+
+        <!-- Content -->
+        <div id="contentStage6" style="display:none;">
+          <div id="escalationStatusBox"></div>
+
+          <h4 style="font-size:0.88rem; font-weight:800; margin:1.25rem 0 0.5rem 0; color:var(--text-heading);">
+            Biên Bản Ký Duyệt Phối Hợp & Thẩm Định Ranh Giới:
+          </h4>
+          <div id="hitlThreePartiesSignBox"></div>
+
+          <h4 style="font-size:0.88rem; font-weight:800; margin:1.5rem 0 0.6rem 0; color:var(--text-heading);">
+            KẾT THÚC: Xuất Bản Chào Giá & Tải Hồ Sơ Khách Hàng:
+          </h4>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem;">
+            <div style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-xl); padding:1.25rem; display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong style="font-size:0.92rem; color:var(--text-heading); display:block;">📄 Báo Cáo Dự Thầu Doanh Nghiệp (.DOCX)</strong>
+                <span style="font-size:0.76rem; color:var(--text-muted);">Tài liệu Word hoàn chỉnh gồm ma trận tuân thủ và bảng giá.</span>
+              </div>
+              <a href="/api/sheets/export/docx" download="Bao_Cao_Chao_Gia_Thien_Minh.docx" class="btn-cute btn-cute-sakura">
+                <span>📥 Tải DOCX</span>
+              </a>
+            </div>
+
+            <div style="background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-xl); padding:1.25rem; display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong style="font-size:0.92rem; color:var(--text-heading); display:block;">📊 Dashboard Tương Tác Dự Án (.HTML)</strong>
+                <span style="font-size:0.76rem; color:var(--text-muted);">Trực quan hóa biểu đồ và bảng giá trực tuyến.</span>
+              </div>
+              <div style="display:flex; gap:0.45rem;">
+                <a href="/api/sheets/export/html" download="Dashboard_Thien_Minh.html" class="btn-cute btn-cute-outline">
+                  <span>📥 Tải HTML</span>
+                </a>
+                <button class="btn-cute btn-cute-peach" onclick="window.open('/api/sheets/export/html', '_blank')">
+                  <span>🖥️ Mở Xem</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="stepper-nav-footer">
+            <button class="btn-cute btn-cute-outline" onclick="goToStep(5)">⬅ Quay Lại Hợp Nhất Tài Liệu</button>
+            <div style="display:flex; gap:0.65rem;">
+              <button class="btn-cute btn-cute-outline" onclick="resetAppToCleanState()">
+                <span>🔄 Bắt Đầu Hồ Sơ Mới</span>
+              </button>
+              <div class="cute-tag-pill tag-success" style="font-size:0.8rem; padding:0.6rem 1.25rem;">
+                <span>✨ KẾT THÚC: ĐÃ XUẤT BẢN THÀNH CÔNG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       CHATBOT DRAWER PANEL
+       ========================================================================== -->
+  <div class="chatbot-drawer-panel" id="chatbotDrawer">
+    <div class="chat-header-bar">
+      <div>
+        <h4><span>🌸</span> Trợ Lý Bé AI Thiên Minh</h4>
+        <p>Luôn sẵn sàng hỗ trợ bạn bóc tách & kiểm tra hồ sơ</p>
+      </div>
+      <button class="chat-close-icon" onclick="toggleChatbot()">✕</button>
+    </div>
+    <div class="chat-messages-container" id="chatMessagesContainer">
+      <div class="chat-bubble bot">
+        Chào bạn nha! Mình là Trợ Lý Bé AI của Thiên Minh đây. Bạn có thể nhập yêu cầu dự án ở Bước 1 hoặc hỏi mình bất cứ điều gì về tiêu chuẩn kỹ thuật, chính sách chiết khấu nhé! 🌸
+      </div>
+    </div>
+
+    <div class="chat-quick-strip">
+      <div class="quick-chip" onclick="sendQuickPrompt('Tiêu chí kỹ thuật nào là bắt buộc?')">Tiêu chí bắt buộc?</div>
+      <div class="quick-chip" onclick="sendQuickPrompt('Lịch Tuần 47 có bị khóa không?')">Lịch Tuần 47?</div>
+      <div class="quick-chip" onclick="sendQuickPrompt('Quy định chiết khấu vượt thẩm quyền')">Chiết khấu quản lý?</div>
+    </div>
+
+    <div class="chat-input-row">
+      <input type="text" id="chatUserInput" class="chat-input-box" placeholder="Hỏi bé AI bất kỳ điều gì..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+      <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
+    </div>
+  </div>
+
+  <!-- FLOATING CHAT PILL -->
+  <div class="floating-chat-bubble" onclick="toggleChatbot()">
+    <span>💬</span>
+    <span>Trợ Lý Chatbot AI</span>
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT CONTROLLER
+       ========================================================================== -->
+  <script>
+    let sampleData = [];
+    let currentResult = null;
+    let currentStep = 1;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('/api/samples');
+        sampleData = await res.json();
+      } catch (e) {
+        console.error("Lỗi nạp dữ liệu mẫu:", e);
+      }
+      setupDragAndDrop();
+      resetAppToCleanState();
+    });
+
+    function setupDragAndDrop() {
+      const dropZone = document.getElementById('fileDropZone');
+      if (!dropZone) return;
+
+      ['dragenter', 'dragover'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.remove('dragover');
+        });
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files.length > 0) {
+          processLoadedFile(files[0]);
+        }
+      });
+    }
+
+    function resetAppToCleanState() {
+      currentResult = null;
+      document.getElementById('inpRfpId').value = "";
+      document.getElementById('inpCompany').value = "";
+      document.getElementById('inpContact').value = "";
+      document.getElementById('inpText').value = "";
+      
+      const noticeBar = document.getElementById('dataReadyNoticeBar');
+      if (noticeBar) {
+        noticeBar.style.display = 'none';
+        noticeBar.innerHTML = '';
+      }
+
+      const inpRfpFile = document.getElementById('inpRfpFile');
+      if (inpRfpFile) inpRfpFile.value = "";
+
+      const dropIcon = document.getElementById('dropzoneIcon');
+      const dropTitle = document.getElementById('dropzoneTitle');
+      const dropSub = document.getElementById('dropzoneSub');
+      if (dropIcon) dropIcon.innerText = "📁";
+      if (dropTitle) dropTitle.innerText = "Tải lên tệp Sheets (.xlsx, .csv) hoặc tài liệu dự án (.docx, .txt)";
+      if (dropSub) dropSub.innerText = "Nhấp để chọn tệp hoặc kéo thả tệp trực tiếp vào khung này";
+
+      // Hiển thị Empty State ở các bước 2-6 (Không có số liệu nào hiển thị)
+      for (let i = 2; i <= 6; i++) {
+        const emptyEl = document.getElementById(`emptyStateStage${i}`);
+        const contentEl = document.getElementById(`contentStage${i}`);
+        const nodeEl = document.getElementById(`wfNode${i}`);
+        const sideTabEl = document.getElementById(`sideTab${i}`);
+        if (emptyEl) emptyEl.style.display = 'flex';
+        if (contentEl) contentEl.style.display = 'none';
+        if (nodeEl) nodeEl.className = 'workflow-step-node locked';
+        if (sideTabEl) sideTabEl.classList.add('locked');
+      }
+
+      // Khôi phục tiêu đề gốc của các node
+      const titles = [
+        "Bắt Đầu: Tiếp Nhận Dữ Liệu",
+        "KN 1: Bóc Tách & Hợp Lệ?",
+        "KN 2: Thẩm Định Kỹ Thuật",
+        "KN 3: Triển Khai & Giá",
+        "Hợp Nhất Báo Cáo & Tasklist",
+        "HITL Duyệt & Xuất Bản"
+      ];
+      for (let i = 1; i <= 6; i++) {
+        const titleEl = document.getElementById(`nodeTitle${i}`);
+        if (titleEl) titleEl.innerText = titles[i - 1];
+      }
+
+      // Làm sạch các bảng và cảnh báo động
+      const tblExtract = document.querySelector('#tableExtractionCheck tbody');
+      if (tblExtract) tblExtract.innerHTML = '';
+      const tblSpec = document.querySelector('#tableStage3Spec tbody');
+      if (tblSpec) tblSpec.innerHTML = '';
+      const tblPricing = document.querySelector('#tableStage4Pricing tbody');
+      if (tblPricing) tblPricing.innerHTML = '';
+      const pricingTiles = document.getElementById('stage4PricingTiles');
+      if (pricingTiles) pricingTiles.innerHTML = '';
+
+      document.getElementById('step1PromptStatus').innerText = "Trạng thái: Trống hoàn toàn. Đang chờ bạn nhập dữ liệu hoặc tải tệp lên để bắt đầu tính toán.";
+      document.getElementById('roadmapStatusBadge').innerText = "Chưa có số liệu • Đang chờ nạp hồ sơ";
+      goToStep(1);
+    }
+
+    function fillQuickSample(idx) {
+      if (!sampleData || !sampleData[idx]) return;
+      const s = sampleData[idx];
+      document.getElementById('inpRfpId').value = s.id;
+      document.getElementById('inpCompany').value = s.customer_company;
+      document.getElementById('inpContact').value = `${s.customer_name} <${s.customer_email}>`;
+      document.getElementById('inpText').value = s.raw_text;
+
+      const noticeBar = document.getElementById('dataReadyNoticeBar');
+      if (noticeBar) {
+        noticeBar.style.display = 'block';
+        noticeBar.innerHTML = `
+          <div class="cute-guide-banner" style="background:var(--sakura-soft); border-color:var(--sakura-border);">
+            <span class="guide-emoji">🌸</span>
+            <div class="guide-text">
+              <strong style="color:var(--sakura-text);">Đã Nạp Văn Bản Yêu Cầu: ${s.customer_company} (${s.id})</strong><br>
+              <span>Văn bản yêu cầu thô đã sẵn sàng vào form! Hệ thống <em>chưa tính toán bất kỳ con số phân tích nào</em>. Vui lòng bấm nút <strong>"✨ Bắt Đầu Phân Tích & Tính Toán Dữ Liệu ➔"</strong> bên dưới để AI bắt đầu tính toán nhé!</span>
+            </div>
+          </div>
+        `;
+      }
+      document.getElementById('step1PromptStatus').innerText = `Đã nạp văn bản: ${s.customer_company}. Hệ thống chưa có con số tính toán nào — Bấm nút bên dưới để bắt đầu tính toán!`;
+      document.getElementById('roadmapStatusBadge').innerText = `Đã có dữ liệu: ${s.id} (Chờ tính toán)`;
+    }
+
+    function tryNavigateStep(step) {
+      if (step > 1 && !currentResult) {
+        alert(`Bạn ơi, các bước phân tích (Kỹ Năng 1 ➔ Kỹ Năng 2 ➔ Kỹ Năng 3 ➔ Hợp Nhất ➔ Duyệt & Xuất Bản) đang được khóa để đảm bảo số liệu chính xác.
+
+Bạn vui lòng nhập dữ liệu hoặc tải tệp ở Bước 1 rồi bấm "✨ Bắt Đầu Phân Tích & Tính Toán Dữ Liệu ➔" để hệ thống tính toán và mở khóa nhé! 🌸`);
+        return;
+      }
+      goToStep(step);
+    }
+
+    function handleRfpFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) processLoadedFile(file);
+    }
+
+    function processLoadedFile(file) {
+      const fileName = file.name;
+      const fileSize = (file.size / 1024).toFixed(1);
+      document.getElementById('inpRfpId').value = "RFP-" + fileName.replace(/\.[^/.]+$/, "").toUpperCase();
+
+      const dropIcon = document.getElementById('dropzoneIcon');
+      const dropTitle = document.getElementById('dropzoneTitle');
+      const dropSub = document.getElementById('dropzoneSub');
+      if (dropIcon) dropIcon.innerText = "📄";
+      if (dropTitle) dropTitle.innerText = `Đã chọn tệp: ${fileName} (${fileSize} KB)`;
+      if (dropSub) dropSub.innerText = "Nhấp lại nếu bạn muốn thay đổi tệp khác";
+
+      if (fileName.endsWith('.txt') || fileName.endsWith('.json') || fileName.endsWith('.csv')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('inpText').value = e.target.result;
+          showUploadSuccessBanner(fileName, fileSize);
+        };
+        reader.readAsText(file);
+      } else {
+        document.getElementById('inpText').value = `[Đã đính kèm tệp hồ sơ: ${fileName} (${fileSize} KB)]\nYêu cầu triển khai hạ tầng mạng doanh nghiệp, bảo trì và mua sắm thiết bị.`;
+        showUploadSuccessBanner(fileName, fileSize);
+      }
+    }
+
+    function showUploadSuccessBanner(fileName, fileSize) {
+      const noticeBar = document.getElementById('dataReadyNoticeBar');
+      if (noticeBar) {
+        noticeBar.style.display = 'block';
+        noticeBar.innerHTML = `
+          <div class="cute-guide-banner" style="background:var(--matcha-soft); border-color:var(--matcha-border);">
+            <span class="guide-emoji">✅</span>
+            <div class="guide-text">
+              <strong style="color:var(--matcha-text);">Tệp Đã Sẵn Sàng: ${fileName} (${fileSize} KB)</strong><br>
+              <span>Dữ liệu đã được nạp thành công. Hãy bấm nút <strong>"✨ Bắt Đầu Phân Tích & Tính Toán Dữ Liệu ➔"</strong> bên dưới để AI tiến hành phân tích nhé!</span>
+            </div>
+          </div>
+        `;
+      }
+      document.getElementById('step1PromptStatus').innerText = `Đã nạp tệp ${fileName}. Bấm nút bên dưới để AI bắt đầu tính toán!`;
+      document.getElementById('roadmapStatusBadge').innerText = "Đã có tệp dữ liệu (Chờ tính toán)";
+    }
+
+    async function executeStep1AndAdvance() {
+      const text = document.getElementById('inpText').value.trim();
+      const company = document.getElementById('inpCompany').value.trim();
+      const rfpId = document.getElementById('inpRfpId').value.trim();
+
+      if (!text) {
+        alert("Bạn ơi, vui lòng nhập nội dung yêu cầu dự án hoặc tải lên tệp Sheets trước khi bắt đầu tính toán nhé! 🌸");
+        return;
+      }
+
+      await runProcessPipeline(
+        rfpId || "RFP-" + Math.floor(1000 + Math.random() * 9000),
+        company || "Doanh nghiệp Khách hàng",
+        (document.getElementById('inpContact').value.split('<')[0] || "Đại diện Khách hàng").trim(),
+        (document.getElementById('inpContact').value.match(/<([^>]+)>/) || [, 'contact@customer.com'])[1],
+        text
+      );
+    }
+
+    async function runProcessPipeline(rfpId, company, contactName, contactEmail, rawText) {
+      const btn = document.getElementById('btnExecuteStep1');
+      btn.innerHTML = `<span>⏳ Bé AI Đang Phân Tích & Tính Toán... ✨</span>`;
+      btn.style.opacity = '0.7';
+
+      const payload = {
+        id: rfpId,
+        customer_company: company,
+        customer_name: contactName,
+        customer_email: contactEmail,
+        received_date: new Date().toISOString().split('T')[0],
+        raw_text: rawText
+      };
+
+      try {
+        const res = await fetch('/api/process', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        currentResult = await res.json();
+
+        // Mở khóa toàn bộ các bước và đổ dữ liệu
+        for (let i = 2; i <= 6; i++) {
+          const emptyEl = document.getElementById(`emptyStateStage${i}`);
+          const contentEl = document.getElementById(`contentStage${i}`);
+          const nodeEl = document.getElementById(`wfNode${i}`);
+          const sideTabEl = document.getElementById(`sideTab${i}`);
+          if (emptyEl) emptyEl.style.display = 'none';
+          if (contentEl) contentEl.style.display = 'block';
+          if (nodeEl) nodeEl.classList.remove('locked');
+          if (sideTabEl) sideTabEl.classList.remove('locked');
+        }
+
+        renderWorkflowData(currentResult);
+        document.getElementById('roadmapStatusBadge').innerText = "Đã hoàn thành phân tích AI";
+        goToStep(2);
+      } catch (e) {
+        alert("Lỗi thực thi AI Agent: " + e);
+      } finally {
+        btn.innerHTML = `<span>✨ Bắt Đầu Phân Tích & Tính Toán Dữ Liệu ➔</span>`;
+        btn.style.opacity = '1';
+      }
+    }
+
+    function formatVND(num) {
+      if (!num && num !== 0) return '0 ₫';
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(num);
+    }
+
+    function renderWorkflowData(res) {
+      // ----------------------------------------------------------------------
+      // GIAI ĐOẠN 2: KỸ NĂNG 1 & RẼ NHÁNH "CÓ ĐỦ DỮ LIỆU HỢP LỆ?"
+      // ----------------------------------------------------------------------
+      const hasInfo = res.extracted_rfp.has_sufficient_info;
+      const g1Alert = document.getElementById('gate1AlertBox');
+      const nextBtn2 = document.getElementById('btnNextFromStage2');
+      const hitlBox = document.getElementById('hitlSalesBox');
+
+      if (hasInfo) {
+        g1Alert.className = 'cute-alert-box alert-matcha';
+        g1Alert.innerHTML = `
+          <div style="font-size:1.4rem;">✅</div>
+          <div>
+            <strong style="font-size:0.95rem;">RẼ NHÁNH: CÓ ĐỦ DỮ LIỆU HỢP LỆ (GO)</strong>
+            <p style="margin-top:0.25rem;">Hồ sơ cung cấp đầy đủ thông số kỹ thuật, số lượng, thời hạn bàn giao và người phụ trách. Chuyển tiếp ngay sang Kỹ Năng 2 để thẩm định kỹ thuật.</p>
+          </div>
+        `;
+        if (nextBtn2) nextBtn2.style.display = 'inline-flex';
+        if (hitlBox) hitlBox.innerHTML = '';
+      } else {
+        g1Alert.className = 'cute-alert-box alert-peach';
+        g1Alert.innerHTML = `
+          <div style="font-size:1.4rem;">⚠️</div>
+          <div>
+            <strong style="font-size:0.95rem;">RẼ NHÁNH: KHÔNG ĐỦ DỮ LIỆU HỢP LỆ ➔ KÍCH HOẠT HITL KINH DOANH</strong>
+            <p style="margin-top:0.25rem;">Hồ sơ thiếu các trường bắt buộc: <strong>${(res.extracted_rfp.missing_fields || []).join(', ')}</strong>. Theo quy trình, Kinh doanh phải liên hệ khách hàng để làm rõ trước khi chào giá.</p>
+          </div>
+        `;
+        if (nextBtn2) nextBtn2.style.display = 'none';
+        if (hitlBox) {
+          hitlBox.innerHTML = `
+            <div style="background:var(--peach-soft); border:1px solid var(--peach-border); border-radius:var(--radius-xl); padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="color:var(--peach-text); font-size:0.88rem;">✉️ HITL: Thư Đề Nghị Khách Hàng Bổ Sung Thông Tin (AI Tạo Tự Động):</strong>
+                <div style="display:flex; gap:0.5rem;">
+                  <button class="btn-cute btn-cute-outline" style="padding:0.35rem 0.75rem; font-size:0.74rem;" onclick="copyProposalDraft()">📋 Sao Chép Email</button>
+                  <button class="btn-cute btn-cute-peach" style="padding:0.35rem 0.75rem; font-size:0.74rem;" onclick="simulateCustomerClarification()">🧪 Giả Lập: Khách Đã Bổ Sung Đủ Dữ Liệu</button>
+                </div>
+              </div>
+              <div class="cute-code-pane" style="max-height:220px; background:#ffffff; color:#2b2e35; border:1px solid var(--peach-border);">${(res.final_output && res.final_output.full_email_body_markdown) || 'Đang cập nhật nội dung...'}</div>
+            </div>
+          `;
+        }
+      }
+
+      const tblExtract = document.querySelector('#tableExtractionCheck tbody');
+      if (tblExtract) {
+        tblExtract.innerHTML = `
+          <tr>
+            <td><strong>1. Cấu Hình & Số Lượng Thiết Bị</strong></td>
+            <td>${res.extracted_rfp.has_products ? '<span class="cute-tag-pill tag-success">ĐẦY ĐỦ</span>' : '<span class="cute-tag-pill tag-hitl-gate">THIẾU / MƠ HỒ</span>'}</td>
+            <td>${res.extracted_rfp.has_products ? `Bóc tách ${(res.extracted_rfp.extracted_standard_items || []).length} nhóm giải pháp tiêu chuẩn` : 'Chỉ mô tả chung chung, thiếu thông số port và loại Switch'}</td>
+            <td>${res.extracted_rfp.has_products ? 'Đạt chuẩn để chuyển sang Kỹ Năng 2' : 'Bắt buộc hỏi lại khách hàng'}</td>
+          </tr>
+          <tr>
+            <td><strong>2. Ngân Sách Dự Toán Trần</strong></td>
+            <td>${res.extracted_rfp.has_budget ? '<span class="cute-tag-pill tag-success">ĐÃ XÁC ĐỊNH</span>' : '<span class="cute-tag-pill tag-hitl-gate">CHƯA CÓ</span>'}</td>
+            <td>${res.extracted_rfp.has_budget ? formatVND(res.extracted_rfp.budget_vnd) : 'Chưa có thông tin ngân sách trần'}</td>
+            <td>${res.extracted_rfp.has_budget ? 'Đủ điều kiện đối soát tài chính' : 'Cần đề xuất hạn mức ngân sách tiêu chuẩn'}</td>
+          </tr>
+          <tr>
+            <td><strong>3. Thời Hạn Triển Khai (Deadline)</strong></td>
+            <td>${res.extracted_rfp.has_deadline ? '<span class="cute-tag-pill tag-success">CÓ THỜI HẠN</span>' : '<span class="cute-tag-pill tag-hitl-gate">KHÔNG RÕ MỐC</span>'}</td>
+            <td>${res.extracted_rfp.deadline_date || (res.extracted_rfp.deadline_days ? `${res.extracted_rfp.deadline_days} ngày` : 'Chưa cung cấp')}</td>
+            <td>${res.extracted_rfp.has_deadline ? 'Đủ điều kiện đối soát lịch nhân sự Kỹ Năng 3' : 'Chưa có mốc cam kết SLA'}</td>
+          </tr>
+          <tr>
+            <td><strong>4. Tiêu Chí Bắt Buộc (Mandatory)</strong></td>
+            <td><span class="cute-tag-pill tag-success">${(res.extracted_rfp.detected_mandatory_criteria || []).length} TIÊU CHÍ</span></td>
+            <td>${(res.extracted_rfp.detected_mandatory_criteria || []).join('; ') || 'Tiêu chuẩn ngành'}</td>
+            <td>Sẵn sàng đối chiếu với Datasheet</td>
+          </tr>
+        `;
+      }
+
+      // ----------------------------------------------------------------------
+      // GIAI ĐOẠN 3: KỸ NĂNG 2 & RẼ NHÁNH "KỸ THUẬT CÓ ĐÁP ỨNG?"
+      // ----------------------------------------------------------------------
+      const antiBox = document.getElementById('antiSpecAlertBox');
+      const techGateAlert = document.getElementById('techFeasibilityGateAlert');
+      const hitlSurvey = document.getElementById('hitlSurveyBox');
+      const mTable = document.querySelector('#tableStage3Spec tbody');
+
+      if (antiBox) antiBox.innerHTML = '';
+      if (techGateAlert) techGateAlert.innerHTML = '';
+      if (hitlSurvey) hitlSurvey.innerHTML = '';
+      if (mTable) mTable.innerHTML = '';
+
+      let hasRejectedCheaper = false;
+      let hasOutOfCatalog = (res.extracted_rfp.out_of_catalog_items && res.extracted_rfp.out_of_catalog_items.length > 0);
+
+      if (res.matched_solutions) {
+        res.matched_solutions.forEach(s => {
+          if (s.rejected_cheaper_options && s.rejected_cheaper_options.length > 0) {
+            hasRejectedCheaper = true;
+            s.rejected_cheaper_options.forEach(rej => {
+              if (antiBox) {
+                antiBox.innerHTML += `
+                  <div class="cute-alert-box alert-pink" style="margin-bottom:0.85rem;">
+                    <div style="font-size:1.4rem;">🚫</div>
+                    <div>
+                      <strong style="font-size:0.95rem;">CHẶN GÓI THIẾU TÍNH NĂNG (ANTI-UNDERSPEC): ${rej.sku}</strong>
+                      <p style="margin-top:0.25rem;">${rej.reason}</p>
+                      <small style="font-weight:800; display:block; margin-top:0.35rem;">➔ HỆ THỐNG BẮT BUỘC CHỌN MÃ ĐẠT CHUẨN: ${s.solution_name} (${s.matched_sku})</small>
+                    </div>
+                  </div>
+                `;
+              }
+            });
+          }
+        });
+      }
+
+      if (hasOutOfCatalog) {
+        if (techGateAlert) {
+          techGateAlert.innerHTML = `
+            <div class="cute-alert-box alert-peach">
+              <div style="font-size:1.4rem;">⚠️</div>
+              <div>
+                <strong style="font-size:0.95rem;">RẼ NHÁNH: CÓ THIẾT BỊ NGOÀI DANH MỤC ➔ KÍCH HOẠT HITL KHẢO SÁT</strong>
+                <p style="margin-top:0.25rem;">Phát hiện thiết bị đặc thù không có sẵn trong catalog: <strong>${res.extracted_rfp.out_of_catalog_items.map(x => x.name).join(', ')}</strong>. Bắt buộc Kỹ thuật & Vận hành khảo sát phương án phụ trợ.</p>
+              </div>
+            </div>
+          `;
+        }
+        if (hitlSurvey) {
+          hitlSurvey.innerHTML = `
+            <div style="background:var(--peach-soft); border:1px solid var(--peach-border); border-radius:var(--radius-xl); padding:1.25rem;">
+              <strong style="color:var(--peach-text); font-size:0.88rem;">🛠️ HITL: Biên Bản Khảo Sát Kỹ Thuật & Vận Hành (Đánh Giá Phương Án Đặc Thù):</strong>
+              <div class="cute-code-pane" style="margin-top:0.5rem; background:#ffffff; color:#2b2e35; border:1px solid var(--peach-border);">
+[BIÊN BẢN KHẢO SÁT PHƯƠNG ÁN NGOÀI DANH MỤC]
+- Thiết bị đặc thù: ${res.extracted_rfp.out_of_catalog_items.map(x => x.name).join(', ')}
+- Đơn vị khảo sát: Bộ phận Giải pháp & Vận hành Thiên Minh
+- Kết luận: Cần nhập khẩu ủy thác và trình Ban Giám Đốc phê duyệt hạn mức bảo hành đặc biệt.
+              </div>
+            </div>
+          `;
+        }
+      } else if (!hasRejectedCheaper && res.extracted_rfp.has_sufficient_info) {
+        if (techGateAlert) {
+          techGateAlert.innerHTML = `
+            <div class="cute-alert-box alert-matcha">
+              <div style="font-size:1.4rem;">✅</div>
+              <div>
+                <strong>RẼ NHÁNH: KỸ THUẬT ĐÁP ỨNG 100%</strong>
+                <p style="margin-top:0.25rem;">Toàn bộ thiết bị đều nằm trong danh mục tiêu chuẩn và đáp ứng đầy đủ yêu cầu tính năng.</p>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      if (res.compliance_matrix && mTable) {
+        res.compliance_matrix.forEach(r => {
+          const tr = document.createElement('tr');
+          const isComp = r.compliance_status.includes('TUÂN THỦ');
+          const pillClass = isComp ? 'tag-success' : 'tag-hitl-gate';
+          tr.innerHTML = `
+            <td><strong>${r.stt}</strong></td>
+            <td><strong>${r.rfp_requirement}</strong></td>
+            <td><span style="font-weight:700;">${r.mandatory_criteria}</span></td>
+            <td>${r.offered_solution}</td>
+            <td><span class="cute-tag-pill ${pillClass}">${r.compliance_status}</span></td>
+            <td><small style="color:var(--text-muted);">${r.notes_and_evidence}</small></td>
+          `;
+          mTable.appendChild(tr);
+        });
+      }
+
+      // ----------------------------------------------------------------------
+      // GIAI ĐOẠN 4: KỸ NĂNG 3 - TRIỂN KHAI & GIÁ
+      // ----------------------------------------------------------------------
+      const schedBox = document.getElementById('scheduleAnalysisBox');
+      const pTiles = document.getElementById('stage4PricingTiles');
+      const pTable = document.querySelector('#tableStage4Pricing tbody');
+
+      if (res.deployment_feasibility && schedBox) {
+        const feas = res.deployment_feasibility;
+        const isFeas = (feas.status === 'FEASIBLE');
+        schedBox.innerHTML = `
+          <div class="cute-alert-box ${isFeas ? 'alert-matcha' : 'alert-pink'}">
+            <div style="font-size:1.5rem;">${isFeas ? '📅' : '⚠️'}</div>
+            <div>
+              <strong style="font-size:0.95rem;">ĐỐI SOÁT LỊCH NHÂN SỰ: ${isFeas ? 'TIẾN ĐỘ THI CÔNG KHẢ THI' : 'PHÁT HIỆN TRÙNG LỊCH TUẦN 47 (BLACKOUT 100%)'}</strong>
+              <p style="margin-top:0.25rem;">${feas.schedule_analysis}</p>
+              <div style="margin-top:0.5rem; font-weight:700;">👉 Phương án điều phối từ AI: ${feas.resolution_proposal}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (pTable) pTable.innerHTML = '';
+      if (res.proposal_summary) {
+        const p = res.proposal_summary;
+        if (pTiles) {
+          pTiles.innerHTML = `
+            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1.15rem; margin-bottom:1.25rem;">
+              <div style="background:var(--bg-subtle); border:1px solid var(--border-light); padding:1.1rem; border-radius:var(--radius-xl);">
+                <div style="font-size:0.7rem; font-weight:800; color:var(--text-muted); text-transform:uppercase;">GIÁ TRỊ DANH MỤC</div>
+                <div style="font-size:1.25rem; font-weight:800; margin-top:0.25rem; color:var(--text-heading);">${formatVND(p.gross_subtotal_vnd)}</div>
+              </div>
+              <div style="background:var(--peach-soft); border:1px solid var(--peach-border); padding:1.1rem; border-radius:var(--radius-xl);">
+                <div style="font-size:0.7rem; font-weight:800; color:var(--peach-text); text-transform:uppercase;">CHIẾT KHẤU ĐÃ GIẢM</div>
+                <div style="font-size:1.25rem; font-weight:800; color:var(--peach-text); margin-top:0.25rem;">-${formatVND(p.total_discount_vnd)}</div>
+              </div>
+              <div style="background:var(--sakura-soft); border:1px solid var(--sakura-border); padding:1.1rem; border-radius:var(--radius-xl);">
+                <div style="font-size:0.7rem; font-weight:800; color:var(--sakura-text); text-transform:uppercase;">TỔNG THANH TOÁN (VAT 10%)</div>
+                <div style="font-size:1.25rem; font-weight:800; color:var(--sakura-text); margin-top:0.25rem;">${formatVND(p.grand_total_vnd)}</div>
+              </div>
+              <div style="background:var(--matcha-soft); border:1px solid var(--matcha-border); padding:1.1rem; border-radius:var(--radius-xl);">
+                <div style="font-size:0.7rem; font-weight:800; color:var(--matcha-text); text-transform:uppercase;">NGÂN SÁCH KHÁCH HÀNG</div>
+                <div style="font-size:1.25rem; font-weight:800; color:var(--matcha-text); margin-top:0.25rem;">${res.extracted_rfp.has_budget ? formatVND(res.extracted_rfp.budget_vnd) : 'Chưa nêu'}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        if (pTable && p.line_items) {
+          p.line_items.forEach((it, idx) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><strong>${idx + 1}</strong></td>
+              <td><strong>${it.name}</strong></td>
+              <td><code>${it.sku}</code></td>
+              <td>${it.quantity} ${it.unit}</td>
+              <td>${formatVND(it.unit_price_vnd)}</td>
+              <td><strong>${formatVND(it.line_total_vnd)}</strong></td>
+            `;
+            pTable.appendChild(tr);
+          });
+        }
+
+        if (pTable && p.out_of_catalog_items) {
+          p.out_of_catalog_items.forEach(outIt => {
+            const tr = document.createElement('tr');
+            tr.style.background = '#fffaf7';
+            tr.innerHTML = `
+              <td>*</td>
+              <td><strong style="color:var(--peach-text);">[NGOÀI DANH MỤC] ${outIt.name}</strong></td>
+              <td><code>OEM-CUSTOM</code></td>
+              <td>${outIt.quantity || 1} Hệ thống</td>
+              <td>${formatVND(outIt.estimated_cost_vnd || 0)}</td>
+              <td><strong>${formatVND(outIt.estimated_cost_vnd || 0)}</strong></td>
+            `;
+            pTable.appendChild(tr);
+          });
+        }
+      }
+
+      // ----------------------------------------------------------------------
+      // GIAI ĐOẠN 5: HỢP NHẤT TÀI LIỆU
+      // ----------------------------------------------------------------------
+      if (res.approval_escalation && document.getElementById('stage5DocketPreview')) {
+        document.getElementById('stage5DocketPreview').innerText = res.approval_escalation.executive_docket;
+      }
+      if (res.final_output && document.getElementById('stage5ProposalDraft')) {
+        document.getElementById('stage5ProposalDraft').innerText = res.final_output.full_email_body_markdown;
+      }
+
+      // ----------------------------------------------------------------------
+      // GIAI ĐOẠN 6: HITL PHÊ DUYỆT & ĐIỀU PHỐI
+      // ----------------------------------------------------------------------
+      const escBox = document.getElementById('escalationStatusBox');
+      const hitl3Sign = document.getElementById('hitlThreePartiesSignBox');
+      const authBadge = document.getElementById('stage6AuthBadge');
+
+      if (hitl3Sign) {
+        hitl3Sign.innerHTML = '';
+        if (res.hitl_review && res.hitl_review.boundary_checks) {
+          res.hitl_review.boundary_checks.forEach(bc => {
+            hitl3Sign.innerHTML += `
+              <div style="display:flex; align-items:center; gap:0.65rem; padding:0.75rem 1rem; background:var(--bg-subtle); border:1px solid var(--border-light); border-radius:var(--radius-lg); margin-bottom:0.5rem; font-size:0.82rem;">
+                <span>${bc.passed ? '✅' : '⚠️'}</span>
+                <strong>[${bc.department}]</strong>: ${bc.notes}
+              </div>
+            `;
+          });
+        }
+      }
+
+      if (res.approval_escalation && escBox && authBadge) {
+        const app = res.approval_escalation;
+        if (app.requires_escalation) {
+          authBadge.className = 'cute-tag-pill tag-hitl-gate';
+          authBadge.innerText = 'CẦN PHÊ DUYỆT CẤP QUẢN LÝ';
+          escBox.innerHTML = `
+            <div class="cute-alert-box alert-peach">
+              <div style="font-size:1.5rem;">⚖️</div>
+              <div>
+                <strong style="font-size:0.95rem;">RẼ NHÁNH: CÓ ĐIỀU KIỆN VƯỢT THẨM QUYỀN ➔ KÍCH HOẠT HITL PHÊ DUYỆT & ĐIỀU PHỐI</strong>
+                <ul style="margin:0.35rem 0 0 1.25rem;">
+                  ${(app.escalation_reasons || []).map(r => `<li>${r}</li>`).join('')}
+                </ul>
+                <div style="margin-top:0.75rem; display:flex; gap:0.5rem;">
+                  <button class="btn-cute btn-cute-sakura" onclick="handleHitlDecision('BOD_APPROVE')">🖋️ Cấp Quản Lý Ký Điện Tử Phê Chuẩn</button>
+                  <button class="btn-cute btn-cute-outline" onclick="handleHitlDecision('REQUEST_REVISION')">✏️ Yêu Cầu Điều Chỉnh</button>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          authBadge.className = 'cute-tag-pill tag-success';
+          authBadge.innerText = 'TRONG THẨM QUYỀN';
+          escBox.innerHTML = `
+            <div class="cute-alert-box alert-matcha">
+              <div>✅ <strong>Rẽ Nhánh: Không Vượt Thẩm Quyền</strong>: Hồ sơ hoàn toàn nằm trong hạn mức tự quyết của Nhân viên Kinh doanh. Sẵn sàng phát hành chính thức!</div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function goToStep(step) {
+      currentStep = step;
+      const stepLabels = [
+        "Bước 1: Tiếp nhận hồ sơ RFP/RFQ (Lark Base)",
+        "Bước 2: Kỹ Năng 1 — Bóc Tách & Có đủ dữ liệu hợp lệ?",
+        "Bước 3: Kỹ Năng 2 — Thẩm Định Kỹ Thuật & Có đáp ứng?",
+        "Bước 4: Kỹ Năng 3 — Thẩm Định Triển Khai & Giá",
+        "Bước 5: Hợp Nhất Báo Cáo, Nháp Giá & Tasklist Phối Hợp",
+        "Bước 6: HITL Phê Duyệt & Điều Phối ➔ KẾT THÚC"
+      ];
+      const indicator = document.getElementById('currentStepIndicatorText');
+      if (indicator) indicator.innerText = stepLabels[step - 1];
+
+      for (let i = 1; i <= 6; i++) {
+        const node = document.getElementById(`wfNode${i}`);
+        const tab = document.getElementById(`sideTab${i}`);
+        const panel = document.getElementById(`panelStage${i}`);
+
+        if (node) {
+          if (i < step) {
+            node.className = 'workflow-step-node completed';
+          } else if (i === step) {
+            node.className = 'workflow-step-node active';
+          } else {
+            node.className = currentResult ? 'workflow-step-node' : 'workflow-step-node locked';
+          }
+        }
+        if (tab) {
+          tab.classList.toggle('active', i === step);
+        }
+        if (panel) {
+          panel.classList.toggle('active', i === step);
+        }
+      }
+
+      const pct = ((step - 1) / 5) * 100;
+      const stepperLine = document.getElementById('stepperLineActive');
+      if (stepperLine) stepperLine.style.width = `${pct}%`;
+      window.scrollTo({ top: 90, behavior: 'smooth' });
+    }
+
+    async function simulateCustomerClarification() {
+      const textWithClarification = document.getElementById('inpText').value + `\n\n--- [LARK BASE SYNC: PHẢN HỒI LÀM RÕ TỪ KHÁCH HÀNG] ---\n1. Ngân sách dự toán trần: 250,000,000 VNĐ.\n2. Khối lượng thiết bị: 02 Switch Access 48-port PoE+, 01 Tường lửa NGFW, 10 Access Point Wi-Fi 6.\n3. Thời hạn hoàn thành: 30 ngày kể từ ngày bàn giao mặt bằng.\n4. Cấp thẩm quyền ký: Giám đốc CNTT.`;
+      document.getElementById('inpText').value = textWithClarification;
+      alert("Đã đồng bộ thông tin bổ sung từ Lark Base! Bé AI đang phân tích lại nhé... ✨");
+      await executeStep1AndAdvance();
+    }
+
+    async function handleHitlDecision(action) {
+      const rfpId = document.getElementById('inpRfpId').value;
+      const res = await fetch('/api/hitl-action', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: action, rfp_id: rfpId, notes: 'Phê duyệt từ giao diện điều hành Thiên Minh' })
+      });
+      const data = await res.json();
+      alert(`Đã ghi nhận quyết định phê duyệt: ${action}! Trạng thái: ${data.message || 'Thành công'}`);
+      const authBadge = document.getElementById('stage6AuthBadge');
+      if (authBadge) {
+        authBadge.className = 'cute-tag-pill tag-success';
+        authBadge.innerText = 'ĐÃ PHÊ DUYỆT CẤP QUẢN LÝ (BOD APPROVED)';
+      }
+    }
+
+    function copyProposalDraft() {
+      const el = document.getElementById('stage5ProposalDraft');
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText);
+      alert('📋 Đã sao chép toàn văn nháp chào giá vào bộ nhớ tạm!');
+    }
+
+    // ------------------------------------------------------------------------
+    // CHATBOT INTERACTION
+    // ------------------------------------------------------------------------
+    function toggleChatbot() {
+      const drawer = document.getElementById('chatbotDrawer');
+      if (drawer) drawer.classList.toggle('open');
+    }
+
+    async function sendChatMessage() {
+      const inp = document.getElementById('chatUserInput');
+      if (!inp) return;
+      const text = inp.value.trim();
+      if (!text) return;
+
+      appendChatMessage(text, 'user');
+      inp.value = '';
+
+      const container = document.getElementById('chatMessagesContainer');
+      const loadingBubble = document.createElement('div');
+      loadingBubble.className = 'chat-bubble bot';
+      loadingBubble.id = 'chatLoadingBubble';
+      loadingBubble.innerText = 'Đang suy nghĩ... 🌸';
+      container.appendChild(loadingBubble);
+      container.scrollTop = container.scrollHeight;
+
+      try {
+        const res = await fetch('/api/chatbot/message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
+        const loadEl = document.getElementById('chatLoadingBubble');
+        if (loadEl) loadEl.remove();
+        appendChatMessage(data.reply || 'Dạ bé AI đã nhận được thông tin!', 'bot');
+      } catch (e) {
+        const loadEl = document.getElementById('chatLoadingBubble');
+        if (loadEl) loadEl.remove();
+        appendChatMessage('Có lỗi khi kết nối với máy chủ AI: ' + e, 'bot');
+      }
+    }
+
+    function appendChatMessage(msg, sender) {
+      const container = document.getElementById('chatMessagesContainer');
+      const b = document.createElement('div');
+      b.className = `chat-bubble ${sender}`;
+      b.innerText = msg;
+      container.appendChild(b);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function sendQuickPrompt(promptText) {
+      document.getElementById('chatUserInput').value = promptText;
+      sendChatMessage();
+    }
+  </script>
+</body>
+</html>

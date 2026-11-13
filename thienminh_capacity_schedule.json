@@ -1,0 +1,64 @@
+{
+  "engineering_team": {
+    "senior_architects_count": 2,
+    "senior_architects_names": ["KTS. Vũ Đức Thắng (CCIE)", "KTS. Lê Hoàng Hải (CCNP Security)"],
+    "field_engineers_count": 6,
+    "max_concurrent_projects": 3
+  },
+  "current_active_projects": [
+    {
+      "project_code": "PRJ-BANK-CORE",
+      "customer": "Techcom Chi nhánh miền Bắc",
+      "lead_architect": "KTS. Vũ Đức Thắng (CCIE)",
+      "assigned_field_engineers": 3,
+      "start_date": "2026-11-05",
+      "committed_end_date": "2026-11-22",
+      "status": "in_progress",
+      "lock_team": true
+    },
+    {
+      "project_code": "PRJ-HOTEL-WIFI",
+      "customer": "Khách sạn Daewoo Hà Nội",
+      "lead_architect": "KTS. Lê Hoàng Hải (CCNP Security)",
+      "assigned_field_engineers": 2,
+      "start_date": "2026-11-08",
+      "committed_end_date": "2026-11-20",
+      "status": "in_progress",
+      "lock_team": true
+    }
+  ],
+  "schedule_calendar_status": {
+    "week_46_nov_09_to_15": {
+      "utilization_pct": 95,
+      "status": "FULLY_BOOKED",
+      "can_accept_new_deployments": false,
+      "notes": "Đội ngũ tập trung cao điểm cut-over mạng ngân hàng."
+    },
+    "week_47_nov_16_to_22": {
+      "utilization_pct": 100,
+      "status": "FULLY_BOOKED",
+      "can_accept_new_deployments": false,
+      "notes": "Toàn bộ Kỹ sư Trưởng và Kỹ thuật viên hiện trường kín lịch đến hết ngày 22/11/2026."
+    },
+    "week_48_nov_23_to_29": {
+      "utilization_pct": 35,
+      "status": "AVAILABLE",
+      "can_accept_new_deployments": true,
+      "earliest_deployment_start_date": "2026-11-24",
+      "notes": "Bắt đầu có thể tiếp nhận dự án mới từ ngày 24/11/2026 trở đi."
+    },
+    "month_12_december_2026": {
+      "utilization_pct": 20,
+      "status": "OPEN",
+      "can_accept_new_deployments": true,
+      "notes": "Lịch thông thoáng cho các dự án cuối năm."
+    }
+  },
+  "rules": {
+    "minimum_lead_time_days_for_core_project": 12,
+    "minimum_lead_time_days_for_wifi_project": 7,
+    "emergency_overtime_allowed": false,
+    "sla_verification_message_on_conflict": "CẢNH BÁO LỊCH TRIỂN KHAI: Đội Kỹ thuật & Vận hành kín lịch đến hết 22/11/2026. Mọi cam kết bàn giao trước mốc này đều vi phạm cam kết chất lượng của công ty."
+  }
+}
+

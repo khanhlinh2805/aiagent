@@ -1,0 +1,209 @@
+[
+  {
+    "sku": "TM-NET-CORE-48X",
+    "name": "Switch Core Doanh nghiệp L3 Thiên Minh TM-Core 48X",
+    "category": "Thiết bị Mạng Core",
+    "unit": "Bộ",
+    "price_vnd": 185000000,
+    "specs": {
+      "port_configuration": "48x 10G SFP+, 6x 100G QSFP28 Uplink",
+      "switching_capacity_tbps": 1.44,
+      "forwarding_rate_mpps": 1080,
+      "redundant_power_supply": true,
+      "routing_protocols": ["Static", "OSPFv2/v3", "BGP4", "IS-IS", "EVPN-VXLAN"],
+      "stacking_supported": true,
+      "ha_features": ["VRRP", "MLAG", "Hot-swappable Fans & Power"],
+      "warranty_months": 36
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 7,
+    "description": "Switch Core hiệu năng cực cao dành cho Campus hoặc Trung tâm dữ liệu vừa và lớn, đầy đủ tính năng dự phòng nguồn kép và giao thức định tuyến BGP/EVPN."
+  },
+  {
+    "sku": "TM-NET-CORE-24X",
+    "name": "Switch Core Doanh nghiệp L3 Thiên Minh TM-Core 24X",
+    "category": "Thiết bị Mạng Core",
+    "unit": "Bộ",
+    "price_vnd": 95000000,
+    "specs": {
+      "port_configuration": "24x 10G SFP+, 4x 40G QSFP+ Uplink",
+      "switching_capacity_tbps": 0.72,
+      "forwarding_rate_mpps": 540,
+      "redundant_power_supply": false,
+      "routing_protocols": ["Static", "OSPFv2/v3", "RIP"],
+      "stacking_supported": false,
+      "ha_features": ["VRRP"],
+      "warranty_months": 24
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 5,
+    "description": "Switch Core L3 phổ thông cho mạng doanh nghiệp vừa. Lưu ý: Chỉ trang bị 1 nguồn (Single PSU), không hỗ trợ định tuyến BGP và EVPN-VXLAN."
+  },
+  {
+    "sku": "TM-SW-ACC-48P",
+    "name": "Switch Access PoE+ 48 Port Thiên Minh TM-Access 48P",
+    "category": "Thiết bị Mạng Access",
+    "unit": "Chiếc",
+    "price_vnd": 38000000,
+    "specs": {
+      "port_configuration": "48x 10/100/1000Base-T PoE+, 4x 10G SFP+ Uplink",
+      "poe_budget_watts": 740,
+      "poe_standard": "IEEE 802.3af/at",
+      "security_features": ["802.1X", "RADIUS/TACACS+", "DHCP Snooping", "Dynamic ARP Inspection"],
+      "management": ["SNMPv3", "CLI", "Web GUI", "Cloud Managed"],
+      "warranty_months": 36
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 3,
+    "description": "Switch tầng truy cập chuẩn doanh nghiệp, công suất PoE 740W đủ cấp nguồn cho 48 camera/AP công suất lớn."
+  },
+  {
+    "sku": "TM-SW-ACC-24P",
+    "name": "Switch Access PoE+ 24 Port Thiên Minh TM-Access 24P",
+    "category": "Thiết bị Mạng Access",
+    "unit": "Chiếc",
+    "price_vnd": 22000000,
+    "specs": {
+      "port_configuration": "24x 10/100/1000Base-T PoE+, 4x 1G SFP Uplink",
+      "poe_budget_watts": 370,
+      "poe_standard": "IEEE 802.3af/at",
+      "security_features": ["802.1X", "Port Security", "DHCP Snooping"],
+      "management": ["CLI", "Web GUI"],
+      "warranty_months": 24
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 3,
+    "description": "Switch Access PoE 24 port tiết kiệm chi phí, uplink 1Gbps."
+  },
+  {
+    "sku": "TM-FW-ENT-500",
+    "name": "Tường lửa Thế hệ mới Thiên Minh TM-Guard 500 (Next-Gen Firewall Enterprise)",
+    "category": "Bảo mật & Tường lửa",
+    "unit": "Chiếc",
+    "price_vnd": 85000000,
+    "specs": {
+      "threat_protection_throughput_gbps": 5.0,
+      "firewall_throughput_gbps": 20.0,
+      "ipsec_vpn_throughput_gbps": 10.0,
+      "ssl_inspection_supported": true,
+      "ha_mode": ["Active/Passive", "Active/Active"],
+      "concurrent_sessions": 2000000,
+      "subscription": "Bao gồm 1 năm bản quyền IPS, AV, Web Filtering, Sandboxing",
+      "warranty_months": 36
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 7,
+    "description": "Tường lửa bảo mật cao cấp hỗ trợ cụm chạy dự phòng High Availability (Active/Passive), quét giải mã sâu SSL Inspection."
+  },
+  {
+    "sku": "TM-FW-SMB-100",
+    "name": "Tường lửa Chi nhánh Thiên Minh TM-Guard 100",
+    "category": "Bảo mật & Tường lửa",
+    "unit": "Chiếc",
+    "price_vnd": 28000000,
+    "specs": {
+      "threat_protection_throughput_gbps": 0.8,
+      "firewall_throughput_gbps": 4.0,
+      "ipsec_vpn_throughput_gbps": 1.5,
+      "ssl_inspection_supported": false,
+      "ha_mode": ["Không hỗ trợ HA"],
+      "concurrent_sessions": 400000,
+      "subscription": "Gói cơ bản Antivirus & Web Filter 1 năm",
+      "warranty_months": 24
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 5,
+    "description": "Tường lửa văn phòng chi nhánh nhỏ. Cảnh báo: Không hỗ trợ giải mã SSL và không hỗ trợ chạy cụm HA dự phòng."
+  },
+  {
+    "sku": "TM-WIFI-AP6",
+    "name": "Điểm phát Wi-Fi 6 Doanh nghiệp Thiên Minh TM-Air Wave2",
+    "category": "Mạng Không Dây Wi-Fi",
+    "unit": "Chiếc",
+    "price_vnd": 6500000,
+    "specs": {
+      "wifi_standard": "Wi-Fi 6 (802.11ax)",
+      "mimo": "4x4:4 MU-MIMO trên cả 2.4GHz & 5GHz",
+      "max_data_rate_gbps": 3.55,
+      "client_capacity": 250,
+      "roaming_standards": ["802.11k", "802.11v", "802.11r (Fast Roaming)"],
+      "power_supply": "PoE+ (802.3at) hoặc Adapter DC",
+      "warranty_months": 36
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 3,
+    "description": "AP Wi-Fi 6 mật độ cao, chuyển vùng mượt mà không rớt gói cho ứng dụng thoại/video call doanh nghiệp."
+  },
+  {
+    "sku": "TM-SVC-DEPLOY-CORE",
+    "name": "Dịch vụ Triển khai Cấu hình Core Network & Cụm Tường lửa HA",
+    "category": "Dịch vụ kỹ thuật",
+    "unit": "Dự án",
+    "price_vnd": 35000000,
+    "specs": {
+      "mandays_required": 5,
+      "senior_engineer_required": true,
+      "deliverables": [
+        "Sơ đồ kiến trúc mạng L2/L3 (Logical & Physical)",
+        "Quy hoạch IP, VLAN, OSPF/BGP routing",
+        "Cấu hình dự phòng HA VRRP/MLAG & Failover Tường lửa",
+        "Biên bản nghiệm thu đo kiểm tải và bảo mật"
+      ]
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 5,
+    "description": "Dịch vụ kỹ sư mạng CCIE/CCNP triển khai hạ tầng mạng lõi trung tâm."
+  },
+  {
+    "sku": "TM-SVC-CABLING-AP",
+    "name": "Dịch vụ Khảo sát, Đo kiểm Vùng phủ & Lắp đặt AP/Switch Tầng",
+    "category": "Dịch vụ kỹ thuật",
+    "unit": "Dự án",
+    "price_vnd": 18000000,
+    "specs": {
+      "mandays_required": 4,
+      "senior_engineer_required": false,
+      "deliverables": [
+        "Bản đồ nhiệt Heatmap mô phỏng vùng phủ Wi-Fi trước và sau lắp đặt",
+        "Đo kiểm suy hao cáp mạng Fluke Test",
+        "Gắn nhãn quy chuẩn và hướng dẫn vận hành"
+      ]
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 4,
+    "description": "Thi công lắp đặt thiết bị đầu cuối và tinh chỉnh kênh tần số Wi-Fi."
+  },
+  {
+    "sku": "TM-SVC-MAINT-247",
+    "name": "Dịch vụ Bảo trì & Hỗ trợ Kỹ thuật 24/7 SLA 2 Giờ (Gói Enterprise 12 Tháng)",
+    "category": "Dịch vụ Bảo trì",
+    "unit": "Năm",
+    "price_vnd": 55000000,
+    "specs": {
+      "support_hours": "24/7/365",
+      "response_sla": "Tối đa 15 phút phản hồi, 2 giờ có mặt xử lý tại chỗ",
+      "spare_parts_replacement": "Ứng cứu phần cứng thay thế tạm thời trong 4 giờ",
+      "health_check": "Kiểm tra định kỳ hàng tháng và cập nhật firmware bảo mật"
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 1,
+    "description": "Gói bảo hành vàng cam kết SLA 2h cho hạ tầng quan trọng của doanh nghiệp."
+  },
+  {
+    "sku": "TM-SVC-MAINT-8X5",
+    "name": "Dịch vụ Bảo trì & Hỗ trợ Kỹ thuật 8x5 SLA 4 Giờ (Gói Tiêu chuẩn 12 Tháng)",
+    "category": "Dịch vụ Bảo trì",
+    "unit": "Năm",
+    "price_vnd": 30000000,
+    "specs": {
+      "support_hours": "8h - 17h từ Thứ 2 đến Thứ 6",
+      "response_sla": "Tối đa 1 giờ phản hồi, 4 giờ có mặt tại chỗ",
+      "spare_parts_replacement": "Theo thời gian bảo hành chính hãng (3 - 5 ngày)",
+      "health_check": "Kiểm tra định kỳ hàng quý"
+    },
+    "status": "in_catalog",
+    "standard_delivery_days": 1,
+    "description": "Gói bảo trì cơ bản giờ hành chính cho các hệ thống văn phòng thông thường."
+  }
+]
+
